@@ -1,0 +1,1 @@
+module.exports = (content) => `module.exports = \`${content}\``
