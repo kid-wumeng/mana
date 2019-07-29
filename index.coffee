@@ -12,3 +12,5 @@ module.exports =
    Vector2: Vector2
 
    canvas: Canvas.create
+
+console.log math.rand()
