@@ -1,6 +1,2 @@
-console.log mana
-canvas = mana.canvas()
-canvas.init()
-
-canvas.call ->
+mana.canvas().init().call ->
    @fillRect(0, 0, 250, 250)
