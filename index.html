@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-   <title>mana</title>
-</head>
-<body>
-   <script src="/mana.js"></script>
-   <script>
-      console.log(mana)
-   </script>
+   <head>
+      <title>mana</title>
+      <script src="/dist/mana.js"></script>
+   </head>
 
-   <a href="/examples/canvas.html">canvas</a>
-</body>
+   <body>
+      <a href="?canvas">canvas</a>
+   </body>
+
+   <script>
+      var query = location.search.slice(1)
+      if (query) {
+         document.title = `mana - ${query}`
+         document.body.appendChild(document.createElement('script')).src = `/dist/examples/${query}.js`
+      }
+   </script>
 </html>

@@ -1,8 +1,11 @@
 module.exports =
-   entry: './src'
+   entry:
+      'mana': './src'
+      'examples/canvas': './examples/canvas'
    output:
       path: require('path').resolve(__dirname, 'dist')
-      filename: 'mana.js'
+      filename: '[name].js'
+      publicPath: 'dist'
       library: 'mana'
       libraryTarget: 'umd'
    module:
