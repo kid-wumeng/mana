@@ -1,16 +1,13 @@
-resolve = require('path').resolve
-
-
 module.exports =
    entry:
-      'mana': './src'
+      'mana': './index'
       'examples/canvas': './examples/canvas'
    output:
-      path: resolve(__dirname, 'dist')
+      path: require('path').resolve(__dirname, 'dist')
       filename: '[name].js'
       publicPath: 'dist'
       library: 'mana'
-      libraryTarget: 'umd'
+      libraryTarget: 'var'
    module:
       rules: [{
          test: /\.coffee$/
@@ -18,9 +15,6 @@ module.exports =
       }]
    resolve:
       extensions: ['.js', '.coffee']
-      alias:
-         'Canvas': resolve(__dirname, 'src/Canvas/Canvas')
-         'device': resolve(__dirname, 'src/device/device')
    devServer:
       host: '0.0.0.0'
       port: 9999
