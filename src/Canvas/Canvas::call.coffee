@@ -1,0 +1,1 @@
+module.exports = (cb=->) -> cb.call(@getContext('2d'))

@@ -1,2 +1,9 @@
+Canvas = require('Canvas')
+device = require('device')
+
+
 module.exports =
-   Canvas: require('./Canvas/Canvas')
+   Canvas: Canvas
+   device: device
+
+   canvas: Canvas.create

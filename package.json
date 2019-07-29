@@ -7,7 +7,7 @@
    "main": "dist/mana",
    "scripts": {
       "dev": "webpack-dev-server",
-      "build": "webpack --mode production"
+      "build": "webpack --mode production --devtool none"
    },
    "devDependencies": {
       "coffee-loader": "^0.9.0",
