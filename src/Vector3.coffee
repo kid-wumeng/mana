@@ -7,15 +7,17 @@ module.exports = class Vector3 extends require('./Vector')
       @x = x
       @y = y
       @z = z
-      Object.defineProperty @, 'dist',         get: -> Math.sqrt(@dist_sq)
-      Object.defineProperty @, 'dist_sq',      get: -> @x**2 + @y**2 + @z**2
-      Object.defineProperty @, 'dist_inverse', get: -> if (dist = @dist) > 0 then 1/dist else 0
-      Object.defineProperty @, 'clone',        get: -> new Vector3(@x, @y, @z)
+      Object.defineProperty @, 'len',         get: -> Math.sqrt(@len_sq)
+      Object.defineProperty @, 'len_sq',      get: -> @x**2 + @y**2 + @z**2
+      Object.defineProperty @, 'len_inverse', get: -> if (len = @len) > 0 then 1/len else 0
+      Object.defineProperty @, 'clone',       get: -> new Vector3(@x, @y, @z)
 
-   normal:          -> @mul(@dist_inverse);         @
+   normal:          -> @mul(@len_inverse);          @
    not:             -> @[i]=-n for n,i in @ when n; @
    add: ({x, y, z}) -> @x+=x; @y+=y; @z+=z;         @
    sub: ({x, y, z}) -> @x-=x; @y-=y; @z-=z;         @
    mul: (n)         -> @x*=n; @y*=n; @z*=n;         @
    div: (n)         -> @x/=n; @y/=n; @z/=n;         @
    dot: ({x, y, z}) -> @x*x + @y*y + @z*z
+   dist:   (v)      -> Math.sqrt(@distSq(v))
+   distSq: (v)      -> @clone.sub(v).len_sq
