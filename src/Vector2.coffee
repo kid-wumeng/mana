@@ -12,8 +12,8 @@ module.exports = class Vector2 extends Vector
       Object.defineProperty @, 'len_inverse', get: -> if (len = @len) > 0 then 1/len else 0
       Object.defineProperty @, 'clone',       get: -> new Vector2(@x, @y)
 
+   negate:       -> @[i]=-n for n,i in @ when n; @
    normal:       -> @mul(@len_inverse);          @
-   not:          -> @[i]=-n for n,i in @ when n; @
    add: ({x, y}) -> @x+=x; @y+=y;                @
    sub: ({x, y}) -> @x-=x; @y-=y;                @
    mul: (n)      -> @x*=n; @y*=n;                @

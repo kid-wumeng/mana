@@ -16,8 +16,8 @@ module.exports = class Vector4 extends Vector
       Object.defineProperty @, 'len_inverse', get: -> if (len = @len) > 0 then 1/len else 0
       Object.defineProperty @, 'clone',       get: -> new Vector4(@x, @y, @z, @w)
 
+   negate:             -> @[i]=-n for n,i in @ when n; @
    normal:             -> @mul(@len_inverse);          @
-   not:                -> @[i]=-n for n,i in @ when n; @
    add: ({x, y, z, w}) -> @x+=x; @y+=y; @z+=z; @w+=w;  @
    sub: ({x, y, z, w}) -> @x-=x; @y-=y; @z-=z; @w-=w;  @
    mul: (n)            -> @x*=n; @y*=n; @z*=n; @w*=n;  @
