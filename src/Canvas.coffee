@@ -1,6 +1,3 @@
-device = require('./device')
-Color4 = require('./Color4')
-
 module.exports = Canvas = HTMLCanvasElement
 
 Canvas::init = (type) ->
@@ -8,7 +5,7 @@ Canvas::init = (type) ->
    @append()
    @backgroundColor = new Color4()
    switch type
-      when '2d' then @color(0,1,1,1); @context = @getContext('2d')
+      when '2d' then @color(1,1,1,1); @context = @getContext('2d')
       when '3d' then @color(0,0,0,1); @context = @getContext('webgl')
    Object.defineProperty @, 'w', get: -> @width
    Object.defineProperty @, 'h', get: -> @height

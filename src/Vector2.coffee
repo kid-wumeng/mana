@@ -1,10 +1,12 @@
-module.exports = class Vector2 extends require('./Vector')
+module.exports = class Vector2 extends Vector
+
    constructor: (x=0, y=0) ->
       super(2)
       Object.defineProperty @, 'x', get: (-> @[0]), set: ((x)-> @[0] = x)
       Object.defineProperty @, 'y', get: (-> @[1]), set: ((y)-> @[1] = y)
       @x = x
       @y = y
+
       Object.defineProperty @, 'len',         get: -> Math.sqrt(@len_sq)
       Object.defineProperty @, 'len_sq',      get: -> @x**2 + @y**2
       Object.defineProperty @, 'len_inverse', get: -> if (len = @len) > 0 then 1/len else 0
