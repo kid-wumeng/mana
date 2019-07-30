@@ -15,9 +15,9 @@ Canvas::init = ->
       .size(device.w, device.h)
       .mount()
 
-Canvas::color = (color) -> @style.backgroundColor = color;              @
-Canvas::fixed =         -> @style.position = 'fixed';                   @
-Canvas::move  = (x, y)  -> @style.left = x ? 0; @style.top = y ? x ? 0; @
-Canvas::size  = (w, h)  -> @width      = w ? 0; @height    = h ? w ? 0; @
-Canvas::call  = (cb=->) -> cb.call(@getContext('2d'));                  @
-Canvas::mount =         -> document.body.appendChild(@);                @
+Canvas::color = (color)    -> @style.backgroundColor = color;  @
+Canvas::fixed =            -> @style.position = 'fixed';       @
+Canvas::move  = (x=0, y=0) -> @style.left = x; @style.top = y; @
+Canvas::size  = (w=0, h=0) -> @width = w; @height = h;         @
+Canvas::call  = (cb=->)    -> cb.call(@getContext('2d'));      @
+Canvas::mount =            -> document.body.appendChild(@);    @
