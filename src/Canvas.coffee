@@ -1,28 +1,20 @@
-module.exports = Canvas = HTMLCanvasElement
+module.exports = class Canvas
 
-Canvas::init = (type) ->
-   switch type
-      when '2d' then @init2D()
-      when '3d' then @init3D()
-   Object.defineProperty @, 'w', get: -> @width
-   Object.defineProperty @, 'h', get: -> @height
+   constructor: ( fullScreen ) ->
+      @el = document.body.appendChild(document.createElement('canvas'))
+      @fullScreen() if fullScreen
 
-Canvas::init2D = -> @color(1,1,1,1); @context = @getContext('2d');    @
-Canvas::init3D = -> @color(0,0,0,1); @context = @getContext('webgl'); @
+   call: (cb, ctx)  -> cb.call(ctx, ctx);             @
+   css:  (cb)       -> cb.call(@el.style, @el.style); @
+   size: (w, h)     -> @w = w ? 0; @h = h ? @w;       @
+   move: (x, y)     -> @css -> @left = x; @top = y
+   show:            -> @css -> @display  = 'inline'
+   hide:            -> @css -> @display  = 'none'
+   fixed:           -> @css -> @position = 'fixed'
+   color: (args...) -> @css -> @backgroundColor = new Color(args...).rgba
 
-Canvas::insert = -> document.body.appendChild(@); @
-Canvas::remove = -> @parentNode.removeChild(@);   @
+   fullScreen: ->
+      @size(device.w, device.h).fixed().move(0, 0)
 
-Canvas::color = (r,g,b,a)  -> @style.backgroundColor = new Color4(r,g,b,a).value; @
-Canvas::fixed =            -> @style.position = 'fixed';                          @
-Canvas::move  = (x=0, y=0) -> @style.left = x; @style.top = y;                    @
-Canvas::size  = (w=0, h=0) -> @width = w; @height = h;                            @
-Canvas::show  =            -> @style.display = 'inline';                          @
-Canvas::hide  =            -> @style.display = 'none';                            @
-Canvas::call  = (cb=->)    -> cb.call(@context);                                  @
-
-Canvas::fullScreen = ->
-   this
-      .fixed()
-      .move(0, 0)
-      .size(device.w, device.h)
+Object.defineProperty Canvas::, 'w', get: (-> @el.width),  set: (w)-> @el.width  = w
+Object.defineProperty Canvas::, 'h', get: (-> @el.height), set: (h)-> @el.height = h

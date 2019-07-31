@@ -4,7 +4,7 @@
 module.exports =
    entry:
       'mana': './index'
-      'examples/canvas': './examples/canvas'
+      'examples/canvas_2d': './examples/canvas_2d'
 
    output:
       path: resolve(__dirname, 'dist')
@@ -24,20 +24,22 @@ module.exports =
 
    plugins: [
       new ProvidePlugin({
-         'device': resolve(__dirname, 'src/$device')
-         'math':   resolve(__dirname, 'src/$math')
-         'util':   resolve(__dirname, 'src/$util')
-         'Canvas': resolve(__dirname, 'src/Canvas')
-         'Color':  resolve(__dirname, 'src/Color')
-         'Color3': resolve(__dirname, 'src/Color3')
-         'Color4': resolve(__dirname, 'src/Color4')
-         'Vector': resolve(__dirname, 'src/Vector')
+         'device':    resolve(__dirname, 'src/$device')
+         'math':      resolve(__dirname, 'src/$math')
+         'util':      resolve(__dirname, 'src/$util')
+         'Buffer':    resolve(__dirname, 'src/Buffer')
+         'Canvas':    resolve(__dirname, 'src/Canvas')
+         'Canvas2D':  resolve(__dirname, 'src/Canvas2D')
+         'Canvas3D':  resolve(__dirname, 'src/Canvas3D')
+         'Color':     resolve(__dirname, 'src/Color')
+         'Quartette': resolve(__dirname, 'src/Quartette')
+         'Vector':    resolve(__dirname, 'src/Vector')
       })
    ]
 
    devServer:
       host: '0.0.0.0'
       port: 9999
-      clientLogLevel: 'none'
+      clientLogLevel: 'warning'
 
    devtool: 'source-map'

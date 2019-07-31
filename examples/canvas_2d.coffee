@@ -1,4 +1,5 @@
-mana.canvas('2d').insert().fullScreen().call ->
+mana.canvas_2d(true).call (ctx) ->
+
    @lineWidth = 3
    @strokeStyle = 'blue'
    @beginPath()
@@ -8,7 +9,5 @@ mana.canvas('2d').insert().fullScreen().call ->
    @lineTo(350, 250)
    @stroke()
 
-v1 = mana.vec(6, 7, 8, 1)
-v2 = mana.vec(2, 2, 2, 6)
-
-console.log v1.dot(v2)
+   console.log(ctx)
+   console.log(ctx.canvas)

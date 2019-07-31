@@ -1,14 +1,15 @@
-module.exports =
-   device:  device
-   math:    math
-   util:    util
-   Canvas:  Canvas
-   Color:   Color
-   Color3:  Color3
-   Color4:  Color4
-   Vector:  Vector
+exports.device    = device
+exports.math      = math
+exports.util      = util
+exports.Buffer    = Buffer
+exports.Canvas    = Canvas
+exports.Canvas2D  = Canvas2D
+exports.Canvas3D  = Canvas3D
+exports.Color     = Color
+exports.Quartette = Quartette
+exports.Vector    = Vector
 
-   canvas: (type)       -> document.createElement('canvas').init(type)
-   color3: (r, g, b)    -> new Color3(r, g, b)
-   color4: (r, g, b, a) -> new Color4(r, g, b, a)
-   vec: -> new Vector(arguments)
+exports.canvas_2d = (args...) -> new Canvas2D(args...)
+exports.canvas_3d = (args...) -> new Canvas3D(args...)
+exports.color     = (args...) -> new Color(args...)
+exports.vec       = (args...) -> new Vector(args...)
