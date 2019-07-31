@@ -1,5 +1,4 @@
 module.exports = class Quartette extends Buffer
-
    constructor: (a1, a2, a3, a4) ->
       switch arguments.length
          when 0 then super(1);

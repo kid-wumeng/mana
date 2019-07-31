@@ -1,4 +1,4 @@
-mana.canvas('2d', true).call (ctx) ->
+mana.canvas_2d(true).call (ctx) ->
 
    @lineWidth = 3
    @strokeStyle = 'blue'
@@ -11,3 +11,4 @@ mana.canvas('2d', true).call (ctx) ->
 
    console.log(ctx)
    console.log(ctx.canvas)
+   console.log(ctx.canvas.constructor)

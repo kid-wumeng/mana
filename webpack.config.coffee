@@ -29,6 +29,8 @@ module.exports =
          'util':      resolve(__dirname, 'src/@util')
          'Buffer':    resolve(__dirname, 'src/Buffer')
          'Canvas':    resolve(__dirname, 'src/Canvas')
+         'Canvas2D':  resolve(__dirname, 'src/Canvas2D')
+         'Canvas3D':  resolve(__dirname, 'src/Canvas3D')
          'Color':     resolve(__dirname, 'src/Color')
          'Matrix':    resolve(__dirname, 'src/Matrix')
          'Quartette': resolve(__dirname, 'src/Quartette')
