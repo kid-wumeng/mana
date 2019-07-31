@@ -24,24 +24,20 @@ module.exports =
 
    plugins: [
       new ProvidePlugin({
-         'device':  resolve(__dirname, 'src/$device')
-         'math':    resolve(__dirname, 'src/$math')
-         'util':    resolve(__dirname, 'src/$util')
-         'Canvas':  resolve(__dirname, 'src/Canvas')
-         'Color':   resolve(__dirname, 'src/Color')
-         'Color3':  resolve(__dirname, 'src/Color3')
-         'Color4':  resolve(__dirname, 'src/Color4')
-         'Vector':  resolve(__dirname, 'src/Vector')
-         'Vector2': resolve(__dirname, 'src/Vector2')
-         'Vector3': resolve(__dirname, 'src/Vector3')
-         'Vector4': resolve(__dirname, 'src/Vector4')
+         'device': resolve(__dirname, 'src/$device')
+         'math':   resolve(__dirname, 'src/$math')
+         'util':   resolve(__dirname, 'src/$util')
+         'Canvas': resolve(__dirname, 'src/Canvas')
+         'Color':  resolve(__dirname, 'src/Color')
+         'Color3': resolve(__dirname, 'src/Color3')
+         'Color4': resolve(__dirname, 'src/Color4')
+         'Vector': resolve(__dirname, 'src/Vector')
       })
    ]
 
    devServer:
       host: '0.0.0.0'
       port: 9999
-      noInfo: true
       clientLogLevel: 'none'
 
    devtool: 'source-map'
