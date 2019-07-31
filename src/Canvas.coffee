@@ -1,10 +1,13 @@
 module.exports = class Canvas
 
-   constructor: ( fullScreen ) ->
+   constructor: ( mode, fullScreen ) ->
       @el = document.body.appendChild(document.createElement('canvas'))
+      @gl = switch mode
+         when '2d' then @color(1,1,1); @el.getContext('2d')
+         when '3d' then @color(0,0,0); @el.getContext('webgl')
       @fullScreen() if fullScreen
 
-   call: (cb, ctx)  -> cb.call(ctx, ctx);             @
+   call: (cb)       -> cb.call(@gl, @gl);             @
    css:  (cb)       -> cb.call(@el.style, @el.style); @
    size: (w, h)     -> @w = w ? 0; @h = h ? @w;       @
    move: (x, y)     -> @css -> @left = x; @top = y

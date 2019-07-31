@@ -1,2 +1,2 @@
-module.exports = class Matrix extends Float32Array
-   constructor: (length) -> super(length)
+module.exports = class Matrix extends Buffer
+   constructor: (args...) -> super(args...)

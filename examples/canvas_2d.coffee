@@ -1,4 +1,4 @@
-mana.canvas_2d(true).call (ctx) ->
+mana.canvas('2d', true).call (ctx) ->
 
    @lineWidth = 3
    @strokeStyle = 'blue'
