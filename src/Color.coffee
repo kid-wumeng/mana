@@ -1,12 +1,19 @@
-module.exports = class Color extends Quartette
+module.exports = class Color
 
-   normal:    -> @clone.normal_me()
-   normal_me: -> @div_me(255)
+   constructor: (@r=0, @g=0, @b=0, @a=1) ->
 
-Object.defineProperty Color::, 'r', get: (-> @get(0)), set: (n)-> @set(0,n)
-Object.defineProperty Color::, 'g', get: (-> @get(1)), set: (n)-> @set(1,n)
-Object.defineProperty Color::, 'b', get: (-> @get(2)), set: (n)-> @set(2,n)
-Object.defineProperty Color::, 'a', get: (-> @[3] ?1), set: (n)-> @set(3,n)
+   add_me: (s) -> @r+=s; @g+=s; @b+=s; @
+   sub_me: (s) -> @r-=s; @g-=s; @b-=s; @
+   mul_me: (s) -> @r*=s; @g*=s; @b*=s; @
+   div_me: (s) -> @r/=s; @g/=s; @b/=s; @
 
-Object.defineProperty Color::, 'rgb',  get: -> "rgb(#{@r},#{@g},#{@b})"
-Object.defineProperty Color::, 'rgba', get: -> "rgba(#{@r},#{@g},#{@b},#{@a})"
+   add: (s) -> @clone.add_me(s)
+   sub: (s) -> @clone.sub_me(s)
+   mul: (s) -> @clone.mul_me(s)
+   div: (s) -> @clone.div_me(s)
+
+get Color::, 'normal_me', -> @div_me(255)
+get Color::, 'normal',    -> @clone.normal_me
+get Color::, 'rgb',       -> "rgb(#{@r},#{@g},#{@b})"
+get Color::, 'rgba',      -> "rgba(#{@r},#{@g},#{@b},#{@a})"
+get Color::, 'clone',     -> new Color(@r,@g,@b,@a)

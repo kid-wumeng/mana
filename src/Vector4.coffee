@@ -9,8 +9,8 @@ module.exports = class Vector4
 
    add: (v) -> @clone.add_me(v)
    sub: (v) -> @clone.sub_me(v)
-   mul: (v) -> @clone.mul_me(v)
-   div: (v) -> @clone.div_me(v)
+   mul: (s) -> @clone.mul_me(s)
+   div: (s) -> @clone.div_me(s)
    dot: (v) -> @x*v.x + @y*v.y + @z*v.z
 
    dist:         (v) -> math.sqrt(@dist_square(v))

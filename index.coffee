@@ -20,8 +20,6 @@ exports.vec2      = (args...) -> new Vector2(args...)
 exports.vec3      = (args...) -> new Vector3(args...)
 exports.vec4      = (args...) -> new Vector4(args...)
 
-v1 = exports.vec4(10, 20, 30, 40)
-v2 = exports.vec4(5, 10)
-
-console.log v1.sub_me(v2)
-console.log v2
+color = exports.color(10, 20, 30, .5)
+console.log color.normal.rgb
+console.log color.normal.rgba
