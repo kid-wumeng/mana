@@ -1,6 +1,6 @@
 mana.canvas_2d(true).call (ctx) ->
 
-   @lineWidth = 3
+   @lineWidth = 2
    @strokeStyle = 'blue'
    @beginPath()
    @moveTo(0, 0)

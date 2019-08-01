@@ -11,6 +11,7 @@ cb = callback
 val = value
 vec = vector
 mat = matrix
+buf = buffer
 deg = degree
 rad = radian
 cfg = config

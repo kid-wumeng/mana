@@ -34,7 +34,11 @@ module.exports =
          'Color':     resolve(__dirname, 'src/Color')
          'Matrix':    resolve(__dirname, 'src/Matrix')
          'Quartette': resolve(__dirname, 'src/Quartette')
-         'Vector':    resolve(__dirname, 'src/Vector')
+         'Vector2':   resolve(__dirname, 'src/Vector2')
+         'Vector3':   resolve(__dirname, 'src/Vector3')
+         'Vector4':   resolve(__dirname, 'src/Vector4')
+         'get':      [resolve(__dirname, 'src/@util'), 'get']
+         'set':      [resolve(__dirname, 'src/@util'), 'set']
       })
    ]
 

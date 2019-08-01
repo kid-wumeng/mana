@@ -1,4 +1,5 @@
 module.exports = class Quartette extends Buffer
+
    constructor: (a1, a2, a3, a4) ->
       switch arguments.length
          when 0 then super(1);
@@ -9,8 +10,8 @@ module.exports = class Quartette extends Buffer
 
    add: (v) -> @clone.add_me(v)
    sub: (v) -> @clone.sub_me(v)
-   mul: (v) -> @clone.mul_me(v)
-   div: (v) -> @clone.div_me(v)
+   mul: (s) -> @clone.mul_me(s)
+   div: (s) -> @clone.div_me(s)
    negate:  -> @clone.negate_me()
 
    add_me: (v) -> @map_me (n,i) -> n+v[i]

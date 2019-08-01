@@ -1,4 +1,5 @@
 module.exports = class Canvas2D extends Canvas
+
    constructor: ->
       super(arguments...); @color(255,255,255,.5)
 

@@ -1,5 +1,6 @@
 module.exports = class Canvas
-   constructor: ( full ) ->
+
+   constructor: (full) ->
       @el = document.createElement('canvas')
       @full() if full
 
