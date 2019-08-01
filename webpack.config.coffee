@@ -27,7 +27,6 @@ module.exports =
          'device':   resolve(__dirname, 'src/@device')
          'math':     resolve(__dirname, 'src/@math')
          'util':     resolve(__dirname, 'src/@util')
-         'Buffer':   resolve(__dirname, 'src/Buffer')
          'Canvas':   resolve(__dirname, 'src/Canvas')
          'Canvas2D': resolve(__dirname, 'src/Canvas2D')
          'Canvas3D': resolve(__dirname, 'src/Canvas3D')

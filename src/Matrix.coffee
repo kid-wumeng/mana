@@ -1,2 +1,2 @@
-module.exports = class Matrix extends Buffer
-   constructor: (args...) -> super(args...)
+module.exports = class Matrix
+   constructor: (args...) ->

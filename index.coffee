@@ -1,7 +1,6 @@
 exports.device   = device
 exports.math     = math
 exports.util     = util
-exports.Buffer   = Buffer
 exports.Canvas   = Canvas
 exports.Canvas2D = Canvas2D
 exports.Canvas3D = Canvas3D
