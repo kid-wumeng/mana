@@ -1,5 +1,4 @@
 module.exports = class Vector4
-
    constructor: (@x=0, @y=0, @z=0, @w=0) ->
 
    add_me: (v) -> @x+=v.x; @y+=v.y; @z+=v.z; @

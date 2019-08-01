@@ -1,4 +1,4 @@
-mana.canvas_2d(true).call (ctx) ->
+mana.canvas('2d').full_screen.call ->
 
    @lineWidth = 2
    @strokeStyle = 'blue'
@@ -9,6 +9,5 @@ mana.canvas_2d(true).call (ctx) ->
    @lineTo(350, 250)
    @stroke()
 
-   console.log(ctx)
-   console.log(ctx.canvas)
-   console.log(ctx.canvas.constructor)
+   console.log(@)
+   console.log(@canvas)

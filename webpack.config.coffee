@@ -24,19 +24,8 @@ module.exports =
 
    plugins: [
       new ProvidePlugin({
-         'device':   resolve(__dirname, 'src/@device')
-         'math':     resolve(__dirname, 'src/@math')
-         'util':     resolve(__dirname, 'src/@util')
-         'Canvas':   resolve(__dirname, 'src/Canvas')
-         'Canvas2D': resolve(__dirname, 'src/Canvas2D')
-         'Canvas3D': resolve(__dirname, 'src/Canvas3D')
-         'Color':    resolve(__dirname, 'src/Color')
-         'Matrix':   resolve(__dirname, 'src/Matrix')
-         'Vector2':  resolve(__dirname, 'src/Vector2')
-         'Vector3':  resolve(__dirname, 'src/Vector3')
-         'Vector4':  resolve(__dirname, 'src/Vector4')
-         'get':     [resolve(__dirname, 'src/@util'), 'get']
-         'set':     [resolve(__dirname, 'src/@util'), 'set']
+         'get': [resolve(__dirname, 'src/@util'), 'get']
+         'set': [resolve(__dirname, 'src/@util'), 'set']
       })
    ]
 

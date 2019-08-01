@@ -1,23 +1,17 @@
-exports.device   = device
-exports.math     = math
-exports.util     = util
-exports.Canvas   = Canvas
-exports.Canvas2D = Canvas2D
-exports.Canvas3D = Canvas3D
-exports.Color    = Color
-exports.Matrix   = Matrix
-exports.Vector2  = Vector2
-exports.Vector3  = Vector3
-exports.Vector4  = Vector4
+module.exports =
+   device:  device  = require('./src/@device')
+   math:    math    = require('./src/@math')
+   util:    util    = require('./src/@util')
+   Canvas:  Canvas  = require('./src/Canvas')
+   Color:   Color   = require('./src/Color')
+   Matrix:  Matrix  = require('./src/Matrix')
+   Vector2: Vector2 = require('./src/Vector2')
+   Vector3: Vector3 = require('./src/Vector3')
+   Vector4: Vector4 = require('./src/Vector4')
 
-exports.canvas_2d = (args...) -> new Canvas2D(args...)
-exports.canvas_3d = (args...) -> new Canvas3D(args...)
-exports.color     = (args...) -> new Color(args...)
-exports.mat       = (args...) -> new Matrix(args...)
-exports.vec2      = (args...) -> new Vector2(args...)
-exports.vec3      = (args...) -> new Vector3(args...)
-exports.vec4      = (args...) -> new Vector4(args...)
-
-color = exports.color(10, 20, 30, .5)
-console.log color.normal.rgb
-console.log color.normal.rgba
+   canvas: (args...) -> new @Canvas(args...)
+   color:  (args...) -> new @Color(args...)
+   mat:    (args...) -> new @Matrix(args...)
+   vec2:   (args...) -> new @Vector2(args...)
+   vec3:   (args...) -> new @Vector3(args...)
+   vec4:   (args...) -> new @Vector4(args...)
