@@ -1,15 +1,16 @@
 module.exports = mana =
-   device:  require('./src/@device')
-   math:    require('./src/@math')
-   util:    require('./src/@util')
-   Canvas:  require('./src/Canvas')
-   Clock:   require('./src/Clock')
-   Color:   require('./src/Color')
-   Matrix:  require('./src/Matrix')
-   Tween:   require('./src/Tween')
-   Vector2: require('./src/Vector2')
-   Vector3: require('./src/Vector3')
-   Vector4: require('./src/Vector4')
+   device:   require('./src/@device')
+   math:     require('./src/@math')
+   util:     require('./src/@util')
+   Canvas:   require('./src/Canvas')
+   Clock:    require('./src/Clock')
+   Color:    require('./src/Color')
+   EventBus: require('./src/EventBus')
+   Matrix:   require('./src/Matrix')
+   Tween:    require('./src/Tween')
+   Vector2:  require('./src/Vector2')
+   Vector3:  require('./src/Vector3')
+   Vector4:  require('./src/Vector4')
 
    canvas: (args...) -> new @Canvas(args...)
    color:  (args...) -> new @Color(args...)
@@ -34,13 +35,22 @@ module.exports = mana =
 # console.log '0.9 -', tween.solve(0.9)
 # console.log '1.0 -', tween.solve(1.0)
 
-clock = new mana.Clock
-clock.start()
-console.log '-------'
+# clock = new mana.Clock
+# clock.start()
+# console.log '-------'
+#
+# setTimeout ->
+#    clock.scale(1000)
+#    # setTimeout ->
+#    #    clock.start()
+#    # , 1000
+# , 3000
 
-setTimeout ->
-   clock.scale(1000)
-   # setTimeout ->
-   #    clock.start()
-   # , 1000
-, 3000
+bus = new mana.EventBus()
+abc = (a) -> console.log a
+bus.on('update', abc)
+bus.once('update', abc)
+bus.on('update', abc)
+bus.on('update', abc)
+bus.emit('update', 123)
+console.log bus

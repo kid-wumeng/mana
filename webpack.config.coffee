@@ -17,6 +17,9 @@ module.exports =
       rules: [{
          test: /\.coffee$/
          loader: 'coffee-loader'
+      },{
+         test: /\.(?:vs)|(?:fs)$/
+         loader: 'shader-loader'
       }]
 
    resolve:
