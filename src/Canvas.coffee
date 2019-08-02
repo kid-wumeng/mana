@@ -1,7 +1,6 @@
 device = require('./@device')
 
 module.exports = class Canvas
-
    constructor: (mode, ready) ->
       @el = document.body.appendChild(document.createElement('canvas'))
       @gl = switch mode
