@@ -1,18 +1,27 @@
 module.exports = class Clock extends require('./EventBus')
-   constructor: (step) ->
+
+   constructor: ->
       super()
       @step = 0
       @last = 0
-      @open = false
-      @scale(step)
+      @running = false
 
-   scale: (step=0) -> @step = step;                                      @
-   start:          -> @open = true; window.requestAnimationFrame(@tick); @
-   pause:          -> @open = false;                                     @
+   start: ->
+      if not @running
+         @running = true
+         window.requestAnimationFrame(@tick)
+      @
 
-   tick: (time) =>
-      if @open
-         if time - @last >= @step
-            @last = time
+   pause: ->
+      if @running
+         @running = false
+      @
+
+   tick: (now) =>
+      if @running
+         if @last + @step <= now
+            @last = now
             @emit('ding')
          window.requestAnimationFrame(@tick)
+
+   scale: (@step=0) -> @

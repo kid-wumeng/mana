@@ -41,8 +41,8 @@ clock.start().on 'ding', ->
 console.log '-------'
 
 setTimeout ->
-   clock.scale(1000)
-   # setTimeout ->
-   #    clock.start()
-   # , 1000
-, 3000
+   clock.scale(300)
+   setTimeout ->
+      clock.pause()
+   , 2000
+, 2000
