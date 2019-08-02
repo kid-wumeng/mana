@@ -1,5 +1,7 @@
-module.exports = class Clock
+module.exports = class Clock extends require('./EventBus')
+
    constructor: (step) ->
+      super()
       @step = 0
       @last = 0
       @open = false
@@ -13,5 +15,5 @@ module.exports = class Clock
       if @open
          if time - @last >= @step
             @last = time
-            # @emit('ding')
+            @emit('ding')
          window.requestAnimationFrame(@tick)

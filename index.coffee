@@ -35,22 +35,14 @@ module.exports = mana =
 # console.log '0.9 -', tween.solve(0.9)
 # console.log '1.0 -', tween.solve(1.0)
 
-# clock = new mana.Clock
-# clock.start()
-# console.log '-------'
-#
-# setTimeout ->
-#    clock.scale(1000)
-#    # setTimeout ->
-#    #    clock.start()
-#    # , 1000
-# , 3000
+clock = new mana.Clock
+clock.start().on 'ding', ->
+   console.log 'ding'
+console.log '-------'
 
-bus = new mana.EventBus()
-abc = (a) -> console.log a
-bus.on('update', abc)
-bus.once('update', abc)
-bus.on('update', abc)
-bus.on('update', abc)
-bus.emit('update', 123)
-console.log bus
+setTimeout ->
+   clock.scale(1000)
+   # setTimeout ->
+   #    clock.start()
+   # , 1000
+, 3000
