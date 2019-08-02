@@ -1,4 +1,5 @@
 module.exports = class Clock extends require('./EventBus')
+
    constructor: (step) ->
       super()
       @step = 0

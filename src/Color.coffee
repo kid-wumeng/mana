@@ -1,4 +1,5 @@
 module.exports = class Color
+
    constructor: (@r=0, @g=0, @b=0, @a=1) ->
 
    add_me: (s) -> @r+=s; @g+=s; @b+=s; @
