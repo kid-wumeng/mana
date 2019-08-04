@@ -13,6 +13,4 @@ module.exports = class Color
 
 get Color::, 'normal_me', -> @div_me(255)
 get Color::, 'normal',    -> @clone.normal_me
-get Color::, 'rgb',       -> "rgb(#{@r},#{@g},#{@b})"
-get Color::, 'rgba',      -> "rgba(#{@r},#{@g},#{@b},#{@a})"
 get Color::, 'clone',     -> new Color(@r,@g,@b,@a)

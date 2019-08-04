@@ -6,7 +6,7 @@ module.exports = mana =
    Clock:    require('./src/Clock')
    Color:    require('./src/Color')
    EventBus: require('./src/EventBus')
-   Matrix:   require('./src/Matrix')
+   Matrix4:  require('./src/Matrix4')
    Tween:    require('./src/Tween')
    Vector2:  require('./src/Vector2')
    Vector3:  require('./src/Vector3')
