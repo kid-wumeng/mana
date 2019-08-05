@@ -18,6 +18,7 @@ cfg = config
 opt = option
 msg = message
 ctx = context
+loc = location
 pub = publish
 sub = subscribe
 src = source

@@ -27,6 +27,9 @@ module.exports =
 
    plugins: [
       new ProvidePlugin({
+         'Vector2': resolve(__dirname, 'src/math/Vector2')
+         'Vector3': resolve(__dirname, 'src/math/Vector3')
+         'Vector4': resolve(__dirname, 'src/math/Vector4')
          'get': [resolve(__dirname, 'src/@util'), 'get']
          'set': [resolve(__dirname, 'src/@util'), 'set']
       })
