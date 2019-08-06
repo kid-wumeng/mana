@@ -1,6 +1,7 @@
 module.exports =
-   math: require('./math')
-   util: require('./util')
+   device: require('./device')
+   math:   require('./math')
+   util:   require('./util')
 
    mat2:  (args...) -> new @math.Matrix2(args...)
    mat3:  (args...) -> new @math.Matrix3(args...)
@@ -9,4 +10,6 @@ module.exports =
    vec3:  (args...) -> new @math.Vector3(args...)
    vec4:  (args...) -> new @math.Vector4(args...)
    clock: (args...) -> new @util.Clock(args...)
+   color: (args...) -> new @util.Color(args...)
    bus:   (args...) -> new @util.MessageBus(args...)
+   tween: (args...) -> new @util.Tween(args...)

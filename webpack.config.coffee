@@ -27,8 +27,8 @@ module.exports =
 
    plugins: [
       new ProvidePlugin({
-         'get': [resolve(__dirname, 'src/@util'), 'get']
-         'set': [resolve(__dirname, 'src/@util'), 'set']
+         'get': [resolve(__dirname, 'src/_'), 'get']
+         'set': [resolve(__dirname, 'src/_'), 'set']
       })
    ]
 
