@@ -1,13 +1,7 @@
-mana.canvas('2d').full_screen.call ->
-
-   @lineWidth = 2
-   @strokeStyle = 'blue'
-   @beginPath()
+canvas = mana.canvas('2d').call ->
+   @fillStyle = '#FFFFFF'
+   @fillRect(0, 0, 200, 200)
+   @strokeStyle = 'red'
    @moveTo(0, 0)
-   @lineTo(250, 250)
-   @moveTo(250, 0)
-   @lineTo(350, 250)
+   @lineTo(400, 400)
    @stroke()
-
-   console.log(@)
-   console.log(@canvas)
