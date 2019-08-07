@@ -7,13 +7,19 @@
 
    <body>
       <a href="?canvas_2d">canvas_2d</a>
+      <a href="?canvas_webgl">canvas_webgl</a>
+      <a href="?canvas_webgl2">canvas_webgl2</a>
    </body>
 
    <script>
       var query = location.search.slice(1)
       if (query) {
-         document.title = `mana - ${query}`
+         document.title = `${query}`
          document.body.appendChild(document.createElement('script')).src = `/dist/examples/${query}.js`
       }
    </script>
+
+   <style>
+      a {display: block}
+   </style>
 </html>

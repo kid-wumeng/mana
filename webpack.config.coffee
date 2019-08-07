@@ -4,7 +4,9 @@
 module.exports =
    entry:
       'mana': './index'
-      'examples/canvas_2d': './examples/canvas_2d'
+      'examples/canvas_2d':     './examples/canvas_2d'
+      'examples/canvas_webgl':  './examples/canvas_webgl'
+      'examples/canvas_webgl2': './examples/canvas_webgl2'
 
    output:
       path: resolve(__dirname, 'dist')
