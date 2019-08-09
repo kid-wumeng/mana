@@ -11,6 +11,26 @@ module.exports = class Matrix3 extends Float32Array
       0, 0, 1
    ]); @
 
+   inverse: ->
+      if det = @det
+         tx = @[2]; ty = @[5]
+         @cofactor().transpose()
+         @[0] /= det; @[1] /= det
+         @[3] /= det; @[4] /= det
+         @[2] = -(tx*@[0]+ty*@[3])
+         @[5] = -(tx*@[1]+ty*@[4])
+      @
+
+   cofactor: ->
+      m11=@[0]; m12=@[1]; m21=@[3]; m22=@[4]
+      @[0]= m22; @[1]=-m21
+      @[3]=-m12; @[4]= m11
+      @
+
+   transpose: ->
+      m12=@[1]; @[1]=@[3]; @[3]=m12
+      @
+
    connect: (m) ->
       A11=@[0]; A12=@[1]; A13=@[2]; A21=@[3]; A22=@[4]; A23=@[5]; A31=@[6]; A32=@[7]; A33=@[8]
       B11=m[0]; B12=m[1]; B13=m[2]; B21=m[3]; B22=m[4]; B23=m[5]; B31=m[6]; B32=m[7]; B33=m[8]
@@ -20,10 +40,9 @@ module.exports = class Matrix3 extends Float32Array
       @
 
    transform: (v) ->
-      { x, y, z } = v
-      switch
-         when v instanceof Vector2 then v.x=@[0]*x+@[1]*y+@[2];   v.y=@[3]*x+@[4]*y+@[5]
-         when v instanceof Vector3 then v.x=@[0]*x+@[1]*y+@[2]*z; v.y=@[3]*x+@[4]*y+@[5]*z; v.z=@[6]*x+@[7]*y+@[8]*z
+      v[0]=@[0]*v[0]+@[1]*v[1]+@[2]
+      v[1]=@[3]*v[0]+@[4]*v[1]+@[5]
       @
 
+get Matrix3::, 'det',   -> @[0]*@[4]-@[1]*@[3]
 get Matrix3::, 'clone', -> new Matrix3(@)

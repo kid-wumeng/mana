@@ -3,10 +3,11 @@
 
 module.exports =
    entry:
-      'mana': './index'
+      'mana':                   './index'
       'examples/canvas_2d':     './examples/canvas_2d'
       'examples/canvas_webgl':  './examples/canvas_webgl'
       'examples/canvas_webgl2': './examples/canvas_webgl2'
+      'examples/transform':     './examples/transform'
 
    output:
       path: resolve(__dirname, 'dist')
@@ -30,6 +31,9 @@ module.exports =
    plugins: [
       new ProvidePlugin({
          'device': resolve(__dirname, 'src/device/@')
+         'Vector2': resolve(__dirname, 'src/math/Vector2')
+         'Vector3': resolve(__dirname, 'src/math/Vector3')
+         'Vector4': resolve(__dirname, 'src/math/Vector4')
          'get': [resolve(__dirname, 'src/_'), 'get']
          'set': [resolve(__dirname, 'src/_'), 'set']
       })
