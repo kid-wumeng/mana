@@ -1,4 +1,4 @@
-canvas = mana.canvas('webgl')
+canvas = mana.canvas('webgl').color(0)
 shader = mana.shader(canvas,
 '
    attribute vec4 position;

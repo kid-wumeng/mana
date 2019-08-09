@@ -1,31 +1,30 @@
 module.exports = class Shader
 
    constructor: (canvas, vert, frag) ->
-      @locations = {}
-
       canvas.call (gl) =>
-         shader_vert = gl.createShader(gl.VERTEX_SHADER)
-         shader_frag = gl.createShader(gl.FRAGMENT_SHADER)
-         gl.shaderSource(shader_vert, vert)
-         gl.shaderSource(shader_frag, frag)
-         gl.compileShader(shader_vert)
-         gl.compileShader(shader_frag)
-         throw gl.getShaderInfoLog(shader_vert) if gl.getShaderParameter(shader_vert, gl.COMPILE_STATUS) is false
-         throw gl.getShaderInfoLog(shader_frag) if gl.getShaderParameter(shader_frag, gl.COMPILE_STATUS) is false
+         @program = gl.createProgram()
+         @locations = {}
 
-         @program = program = gl.createProgram()
-         gl.attachShader(program, shader_vert)
-         gl.attachShader(program, shader_frag)
-         gl.linkProgram(program)
+         vs = gl.createShader(gl.VERTEX_SHADER)
+         fs = gl.createShader(gl.FRAGMENT_SHADER)
+         gl.shaderSource(vs, vert)
+         gl.shaderSource(fs, frag)
+         gl.compileShader(vs)
+         gl.compileShader(fs)
+         if gl.getShaderParameter(vs, gl.COMPILE_STATUS) is false then throw gl.getShaderInfoLog(vs)
+         if gl.getShaderParameter(fs, gl.COMPILE_STATUS) is false then throw gl.getShaderInfoLog(fs)
+         gl.attachShader(@program, vs)
+         gl.attachShader(@program, fs)
+         gl.linkProgram(@program)
 
-         for i in [0...gl.getProgramParameter(program, gl.ACTIVE_ATTRIBUTES)]
-            {name} = gl.getActiveAttrib(program, i)
-            @locations[name] = gl.getAttribLocation(program, name)
+         attributes = gl.getProgramParameter(@program, gl.ACTIVE_ATTRIBUTES)
+         uniforms   = gl.getProgramParameter(@program, gl.ACTIVE_UNIFORMS)
+
+         for i in [0...attributes]
+            {name} = gl.getActiveAttrib(@program, i)
+            @locations[name] = gl.getAttribLocation(@program, name)
             gl.enableVertexAttribArray(@locations[name])
 
-
-         for i in [0...gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS)]
-            {name} = gl.getActiveUniform(program, i)
-            @locations[name] = gl.getUniformLocation(program, name)
-
-         console.log @
+         for i in [0...uniforms]
+            {name} = gl.getActiveUniform(@program, i)
+            @locations[name] = gl.getUniformLocation(@program, name)

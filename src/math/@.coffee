@@ -1,4 +1,3 @@
-exports.Matrix2 = require('./Matrix2')
 exports.Matrix3 = require('./Matrix3')
 exports.Matrix4 = require('./Matrix4')
 exports.Vector2 = require('./Vector2')
