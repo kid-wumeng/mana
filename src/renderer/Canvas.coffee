@@ -14,5 +14,5 @@ module.exports = class Canvas
    index: (z=0)                -> @css(-> @zIndex=z)
    color: (r=0, g=r, b=g, a=1) -> @css(-> @backgroundColor="rgba(#{r},#{g},#{b},#{a})")
 
-get Canvas::, 'w', -> @raw.clientWidth
-get Canvas::, 'h', -> @raw.clientHeight
+GET Canvas::, 'w', -> @raw.clientWidth
+GET Canvas::, 'h', -> @raw.clientHeight

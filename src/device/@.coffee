@@ -1,3 +1,3 @@
-get exports, 'dpr', -> devicePixelRatio || 1
-get exports, 'h',   -> innerHeight
-get exports, 'w',   -> innerWidth
+GET exports, 'dpr', -> devicePixelRatio || 1
+GET exports, 'h',   -> innerHeight
+GET exports, 'w',   -> innerWidth

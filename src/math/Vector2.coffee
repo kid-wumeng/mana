@@ -22,12 +22,12 @@ module.exports = class Vector2 extends Float32Array
    dist_sq: (v) -> @sub(v).len_sq
    direct:  (v) -> v.sub(@)
 
-get Vector2::, 'len',    -> Math.sqrt(@len_sq)
-get Vector2::, 'len_sq', -> @[0]**2 + @[1]**2
-get Vector2::, 'unit',   -> @clone.normalize()
-get Vector2::, 'clone',  -> new Vector2(@[0],@[1])
+GET Vector2::, 'len',    -> Math.sqrt(@len_sq)
+GET Vector2::, 'len_sq', -> @[0]**2 + @[1]**2
+GET Vector2::, 'unit',   -> @clone.normalize()
+GET Vector2::, 'clone',  -> new Vector2(@[0],@[1])
 
-get Vector2::, 'x', -> @[0]
-get Vector2::, 'y', -> @[1]
-set Vector2::, 'x', (x) -> @[0] = x
-set Vector2::, 'y', (y) -> @[1] = y
+GET Vector2::, 'x', -> @[0]
+GET Vector2::, 'y', -> @[1]
+SET Vector2::, 'x', (x) -> @[0] = x
+SET Vector2::, 'y', (y) -> @[1] = y

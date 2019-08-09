@@ -30,22 +30,23 @@ module.exports =
 
    plugins: [
       new ProvidePlugin({
-         'device':   resolve(__dirname, 'src/device/@')
-         'math':     resolve(__dirname, 'src/math/@')
-         'Matrix3':  resolve(__dirname, 'src/math/Matrix3')
-         'Matrix4':  resolve(__dirname, 'src/math/Matrix4')
-         'Vector2':  resolve(__dirname, 'src/math/Vector2')
-         'Vector3':  resolve(__dirname, 'src/math/Vector3')
-         'Vector4':  resolve(__dirname, 'src/math/Vector4')
-         'Canvas':   resolve(__dirname, 'src/renderer/Canvas')
-         'Shader':   resolve(__dirname, 'src/renderer/Shader')
-         'util':     resolve(__dirname, 'src/util/@')
-         'Clock':    resolve(__dirname, 'src/util/Clock')
-         'Color':    resolve(__dirname, 'src/util/Color')
-         'EventBus': resolve(__dirname, 'src/util/EventBus')
-         'Tween':    resolve(__dirname, 'src/util/Tween')
-         'get':     [resolve(__dirname, 'src/util/@'), 'get']
-         'set':     [resolve(__dirname, 'src/util/@'), 'set']
+         'device':     resolve(__dirname, 'src/device/@')
+         'math':       resolve(__dirname, 'src/math/@')
+         'Matrix3':    resolve(__dirname, 'src/math/Matrix3')
+         'Matrix4':    resolve(__dirname, 'src/math/Matrix4')
+         'Vector2':    resolve(__dirname, 'src/math/Vector2')
+         'Vector3':    resolve(__dirname, 'src/math/Vector3')
+         'Vector4':    resolve(__dirname, 'src/math/Vector4')
+         'Canvas':     resolve(__dirname, 'src/renderer/Canvas')
+         'Shader':     resolve(__dirname, 'src/renderer/Shader')
+         'Translate2': resolve(__dirname, 'src/transform/Translate2')
+         'util':       resolve(__dirname, 'src/util/@')
+         'Clock':      resolve(__dirname, 'src/util/Clock')
+         'Color':      resolve(__dirname, 'src/util/Color')
+         'EventBus':   resolve(__dirname, 'src/util/EventBus')
+         'Tween':      resolve(__dirname, 'src/util/Tween')
+         'GET':       [resolve(__dirname, 'src/util/@'), 'get']
+         'SET':       [resolve(__dirname, 'src/util/@'), 'set']
       })
    ]
 

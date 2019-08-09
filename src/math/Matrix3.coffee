@@ -44,5 +44,5 @@ module.exports = class Matrix3 extends Float32Array
       v[1]=@[3]*v[0]+@[4]*v[1]+@[5]
       @
 
-get Matrix3::, 'det',   -> @[0]*@[4]-@[1]*@[3]
-get Matrix3::, 'clone', -> new Matrix3(@)
+GET Matrix3::, 'det',   -> @[0]*@[4]-@[1]*@[3]
+GET Matrix3::, 'clone', -> new Matrix3(@)

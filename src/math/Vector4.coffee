@@ -24,16 +24,16 @@ module.exports = class Vector4 extends Float32Array
    dist_sq: (v) -> @sub(v).len_sq
    direct:  (v) -> v.sub(@)
 
-get Vector4::, 'len',    -> Math.sqrt(@len_sq)
-get Vector4::, 'len_sq', -> @[0]**2 + @[1]**2 + @[2]**2
-get Vector4::, 'unit',   -> @clone.normalize()
-get Vector4::, 'clone',  -> new Vector4(@[0],@[1],@[2],@[3])
+GET Vector4::, 'len',    -> Math.sqrt(@len_sq)
+GET Vector4::, 'len_sq', -> @[0]**2 + @[1]**2 + @[2]**2
+GET Vector4::, 'unit',   -> @clone.normalize()
+GET Vector4::, 'clone',  -> new Vector4(@[0],@[1],@[2],@[3])
 
-get Vector4::, 'x', -> @[0]
-get Vector4::, 'y', -> @[1]
-get Vector4::, 'z', -> @[2]
-get Vector4::, 'w', -> @[3]
-set Vector4::, 'x', (x) -> @[0] = x
-set Vector4::, 'y', (y) -> @[1] = y
-set Vector4::, 'z', (z) -> @[2] = z
-set Vector4::, 'w', (w) -> @[3] = w
+GET Vector4::, 'x', -> @[0]
+GET Vector4::, 'y', -> @[1]
+GET Vector4::, 'z', -> @[2]
+GET Vector4::, 'w', -> @[3]
+SET Vector4::, 'x', (x) -> @[0] = x
+SET Vector4::, 'y', (y) -> @[1] = y
+SET Vector4::, 'z', (z) -> @[2] = z
+SET Vector4::, 'w', (w) -> @[3] = w

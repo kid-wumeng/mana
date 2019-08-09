@@ -24,14 +24,14 @@ module.exports = class Vector3 extends Float32Array
    dist_sq: (v) -> @sub(v).len_sq
    direct:  (v) -> v.sub(@)
 
-get Vector3::, 'len',    -> Math.sqrt(@len_sq)
-get Vector3::, 'len_sq', -> @[0]**2 + @[1]**2 + @[2]**2
-get Vector3::, 'unit',   -> @clone.normalize()
-get Vector3::, 'clone',  -> new Vector3(@[0],@[1],@[2])
+GET Vector3::, 'len',    -> Math.sqrt(@len_sq)
+GET Vector3::, 'len_sq', -> @[0]**2 + @[1]**2 + @[2]**2
+GET Vector3::, 'unit',   -> @clone.normalize()
+GET Vector3::, 'clone',  -> new Vector3(@[0],@[1],@[2])
 
-get Vector3::, 'x', -> @[0]
-get Vector3::, 'y', -> @[1]
-get Vector3::, 'z', -> @[2]
-set Vector3::, 'x', (x) -> @[0] = x
-set Vector3::, 'y', (y) -> @[1] = y
-set Vector3::, 'z', (z) -> @[2] = z
+GET Vector3::, 'x', -> @[0]
+GET Vector3::, 'y', -> @[1]
+GET Vector3::, 'z', -> @[2]
+SET Vector3::, 'x', (x) -> @[0] = x
+SET Vector3::, 'y', (y) -> @[1] = y
+SET Vector3::, 'z', (z) -> @[2] = z
