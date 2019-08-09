@@ -28,19 +28,3 @@ canvas.call (gl) ->
    gl.vertexAttribPointer(shader.locations['position'], size=2, type=gl.FLOAT, normalize=false, stride=20, offset=0)
    gl.vertexAttribPointer(shader.locations['color'], size=3, type=gl.FLOAT, normalize=false, stride=20, offset=8)
    gl.drawArrays(mode=gl.TRIANGLES, first=0, count=3)
-
-
-
-m1 = mana.mat3([
-   1, 0, 70
-   0, 2, 80
-   0, 0, 77
-])
-
-
-v1 = mana.vec3(1, 2, 3)
-m1.transform(v1)
-console.log v1
-m1.inverse()
-m1.transform(v1)
-console.log v1

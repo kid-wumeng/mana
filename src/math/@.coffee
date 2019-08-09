@@ -1,9 +1,3 @@
-exports.Matrix3 = require('./Matrix3')
-exports.Matrix4 = require('./Matrix4')
-exports.Vector2 = require('./Vector2')
-exports.Vector3 = require('./Vector3')
-exports.Vector4 = require('./Vector4')
-
 exports.sum   = (all)            -> sum=0; sum+=n for n in all; sum
 exports.deg   = (rad=0)          -> rad / @PI * 180
 exports.rad   = (deg=0)          -> deg / 180 * @PI

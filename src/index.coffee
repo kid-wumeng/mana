@@ -1,17 +1,16 @@
 module.exports =
-   device:   require('./device/@')
-   math:     require('./math/@')
-   renderer: require('./renderer/@')
-   util:     require('./util/@')
+   device: device
+   math: math
+   util: util
 
-   mat3:   (args...) -> new @math.Matrix3(args...)
-   mat4:   (args...) -> new @math.Matrix4(args...)
-   vec2:   (args...) -> new @math.Vector2(args...)
-   vec3:   (args...) -> new @math.Vector3(args...)
-   vec4:   (args...) -> new @math.Vector4(args...)
-   canvas: (args...) -> new @renderer.Canvas(args...)
-   shader: (args...) -> new @renderer.Shader(args...)
-   clock:  (args...) -> new @util.Clock(args...)
-   color:  (args...) -> new @util.Color(args...)
-   bus:    (args...) -> new @util.MessageBus(args...)
-   tween:  (args...) -> new @util.Tween(args...)
+   mat3:   (args...) -> new Matrix3(args...)
+   mat4:   (args...) -> new Matrix4(args...)
+   vec2:   (args...) -> new Vector2(args...)
+   vec3:   (args...) -> new Vector3(args...)
+   vec4:   (args...) -> new Vector4(args...)
+   canvas: (args...) -> new Canvas(args...)
+   shader: (args...) -> new Shader(args...)
+   clock:  (args...) -> new Clock(args...)
+   color:  (args...) -> new Color(args...)
+   bus:    (args...) -> new EventBus(args...)
+   tween:  (args...) -> new Tween(args...)

@@ -1,4 +1,2 @@
-exports.Clock      = require('./Clock')
-exports.Color      = require('./Color')
-exports.MessageBus = require('./MessageBus')
-exports.Tween      = require('./Tween')
+exports.get = (object, name, get) -> Object.defineProperty(object, name, {get, configurable: true})
+exports.set = (object, name, set) -> Object.defineProperty(object, name, {set, configurable: true})

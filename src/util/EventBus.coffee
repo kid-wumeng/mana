@@ -1,4 +1,4 @@
-module.exports = class MessageBus
+module.exports = class EventBus
 
    constructor: ->
       @map = {}
