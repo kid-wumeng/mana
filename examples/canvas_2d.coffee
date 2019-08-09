@@ -1,4 +1,4 @@
-canvas = mana.canvas_2d()
+canvas = mana.canvas('2d')
 canvas.call ->
    @fillStyle = 'pink'
    @fillRect(0, 0, 200, 200)

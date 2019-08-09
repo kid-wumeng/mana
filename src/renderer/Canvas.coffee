@@ -1,11 +1,13 @@
-device = require('../device')
 module.exports = class Canvas
 
-   constructor: (options={}, mode) ->
+   constructor: (mode, options={}) ->
       @dpr = options.dpr ? device.dpr
       @raw = options.raw ? document.body.appendChild(document.createElement('canvas'))
       @ctx = @raw.getContext(mode)
-      @color(0,0,0,.85).fixed().move(0).size(device.w, device.h) if not options.raw # full-screen
+      if not options.raw
+         @color(0,0,0,1).fixed().move(0).size(device.w, device.h)
+
+      # full-screen
 
    call:  (cb=->)              -> cb.call(@ctx, @ctx)
    css:   (cb=->)              -> cb.call(@raw.style, @raw.style);                                                   @
