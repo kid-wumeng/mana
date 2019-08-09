@@ -1,3 +1,4 @@
+device = require('../device/@')
 module.exports = class Canvas
 
    constructor: (mode, options={}) ->

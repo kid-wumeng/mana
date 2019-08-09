@@ -1,4 +1,4 @@
-module.exports = class Translation2 extends Matrix3
+module.exports = class Translation2 extends require('../math/Matrix3')
 
    value: (x=0, y=x) ->
       @[2]=x

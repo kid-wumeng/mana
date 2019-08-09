@@ -11,7 +11,7 @@ t1.value(7, 9)
 t2.value(100, 200)
 ortho.value(0, 100, 0, 100)
 
-rotate.value(math.rad(40))
+rotate.value(mana.math.rad(40))
 scale.value(2)
 
 t1.concat(t2)

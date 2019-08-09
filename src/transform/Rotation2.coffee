@@ -1,6 +1,6 @@
 { sin, cos } = Math
 
-module.exports = class Rotation2 extends Matrix3
+module.exports = class Rotation2 extends require('../math/Matrix3')
 
    value: (a) ->
       @[0]=cos(a); @[1]=-sin(a)
