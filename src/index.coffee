@@ -3,18 +3,21 @@ module.exports =
    math: math
    util: util
 
-   Matrix3:    Matrix3
-   Matrix4:    Matrix4
-   Vector2:    Vector2
-   Vector3:    Vector3
-   Vector4:    Vector4
-   Canvas:     Canvas
-   Shader:     Shader
-   Translate2: Translate2
-   Clock:      Clock
-   Color:      Color
-   EventBus:   EventBus
-   Tween:      Tween
+   Matrix3:          Matrix3
+   Matrix4:          Matrix4
+   Vector2:          Vector2
+   Vector3:          Vector3
+   Vector4:          Vector4
+   Canvas:           Canvas
+   Shader:           Shader
+   ProjectionOrtho2: ProjectionOrtho2
+   Rotation2:        Rotation2
+   Scaling2:         Scaling2
+   Translation2:     Translation2
+   Clock:            Clock
+   Color:            Color
+   EventBus:         EventBus
+   Tween:            Tween
 
    mat3:   (args...) -> new Matrix3(args...)
    mat4:   (args...) -> new Matrix4(args...)
