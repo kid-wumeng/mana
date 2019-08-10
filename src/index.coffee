@@ -16,5 +16,6 @@ module.exports =
    Clock:            require('./util/Clock')
    Color:            require('./util/Color')
    EventBus:         require('./util/EventBus')
+   Loader:           require('./util/Loader')
    MatrixStack3:     require('./util/MatrixStack3')
    Tween:            require('./util/Tween')

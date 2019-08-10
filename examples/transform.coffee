@@ -29,6 +29,7 @@ v3 = stack.top.transform(new mana.Vector2(100, 0))
 v4 = stack.top.transform(new mana.Vector2(100, 100))
 
 canvas.call (gl) ->
+
    gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
    gl.useProgram(shader.program)
 
