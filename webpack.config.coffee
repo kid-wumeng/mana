@@ -7,6 +7,7 @@ module.exports =
       'examples/canvas_2d':     './examples/canvas_2d'
       'examples/canvas_webgl':  './examples/canvas_webgl'
       'examples/canvas_webgl2': './examples/canvas_webgl2'
+      'examples/sprite':        './examples/sprite'
       'examples/texture':       './examples/texture'
       'examples/transform':     './examples/transform'
 

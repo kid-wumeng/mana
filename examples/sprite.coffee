@@ -1,3 +1,7 @@
+animation = new mana.Animation(384, 384)
+animation.split(32, 48)
+console.log animation
+
 canvas = new mana.Canvas('webgl').color(0)
 shader = new mana.Shader(canvas,
 '
@@ -21,14 +25,14 @@ shader = new mana.Shader(canvas,
 stack = new mana.MatrixStack3()
 stack.push(new mana.ProjectionOrtho2().value(0, 0, canvas.w, canvas.h))
 stack.push(new mana.Translation2().value(canvas.w/2, canvas.h/2))
-stack.push(new mana.Rotation2().value(mana.math.rad(45)))
-stack.push(new mana.Scaling2().value(0.5))
-stack.push(new mana.Translation2().value(-240))
+stack.push(new mana.Rotation2().value(mana.math.rad(0)))
+stack.push(new mana.Scaling2().value(2))
+stack.push(new mana.Translation2().value(-16, -24))
 
 v1 = stack.top.transform(new mana.Vector2(0, 0))
-v2 = stack.top.transform(new mana.Vector2(0, 480))
-v3 = stack.top.transform(new mana.Vector2(480, 0))
-v4 = stack.top.transform(new mana.Vector2(480, 480))
+v2 = stack.top.transform(new mana.Vector2(0, 48))
+v3 = stack.top.transform(new mana.Vector2(32, 0))
+v4 = stack.top.transform(new mana.Vector2(32, 48))
 
 new mana.Loader()
    .image('a', 'assets/images/a.jpg')
@@ -38,7 +42,7 @@ new mana.Loader()
 
       texture = gl.createTexture()
       gl.bindTexture(gl.TEXTURE_2D, texture)
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, images['a'])
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, images['b'])
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
@@ -47,12 +51,14 @@ new mana.Loader()
       gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
       gl.useProgram(shader.program)
 
+      { x, y, w, h } = animation.frames[0]
+
       gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer())
       gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
-         v1.x, v1.y, 0, 0
-         v2.x, v2.y, 0, 1
-         v3.x, v3.y, 1, 0
-         v4.x, v4.y, 1, 1
+         v1.x, v1.y, x, y
+         v2.x, v2.y, x, y+h
+         v3.x, v3.y, x+w, y
+         v4.x, v4.y, x+w, y+h
       ]), gl.STATIC_DRAW)
 
       gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gl.createBuffer())
