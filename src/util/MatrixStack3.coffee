@@ -5,12 +5,7 @@ module.exports = class MatrixStack3 extends Array
       super()
       Array.prototype.push.call(@, new Matrix3)
 
-   push: (mat) ->
-      super(@top.clone.concat(mat))
-      @
-
-   pop: ->
-      super()
-      @
+   push: (mat) -> super(@top.clone.concat(mat)); @
+   pop:        -> super();                       @
 
 GET MatrixStack3::, 'top', -> @[@length-1]

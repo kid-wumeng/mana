@@ -51,7 +51,7 @@ module.exports = class Matrix4 extends Float32Array
          when v instanceof Vector2 then v[0]=@[0]*x+@[1]*y+@[3];          v[1]=@[4]*x+@[5]*y+@[7]
          when v instanceof Vector3 then v[0]=@[0]*x+@[1]*y+@[2]*z+@[3];   v[1]=@[4]*x+@[5]*y+@[6]*z+@[7];   v[2]=@[8]*x+@[9]*y+@[10]*z+@[11]
          when v instanceof Vector4 then v[0]=@[0]*x+@[1]*y+@[2]*z+@[3]*w; v[1]=@[4]*x+@[5]*y+@[6]*z+@[7]*w; v[2]=@[8]*x+@[9]*y+@[10]*z+@[11]*w; v[3]=@[12]*x+@[13]*y+@[14]*z+@[15]*w
-      @
+      v
 
 GET Matrix4::, 'det',   -> @[0]*(@[5]*@[10]-@[6]*@[9]) + @[1]*(@[6]*@[8]-@[4]*@[10]) + @[2]*(@[4]*@[9]-@[5]*@[8])
 GET Matrix4::, 'clone', -> new Matrix4(@)
