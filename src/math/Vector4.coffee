@@ -1,3 +1,6 @@
+GET = require('../GET')
+SET = require('../SET')
+
 module.exports = class Vector4 extends Float32Array
 
    constructor: (x=0, y=0, z=0, w=1) ->

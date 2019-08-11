@@ -1,6 +1,7 @@
+GET     = require('../GET')
 Matrix3 = require('../math/Matrix3')
-module.exports = class MatrixStack3 extends Array
 
+module.exports = class MatrixStack3 extends Array
    constructor: ->
       super()
       Array.prototype.push.call(@, new Matrix3)

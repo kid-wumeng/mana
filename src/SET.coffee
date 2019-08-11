@@ -1,0 +1,1 @@
+module.exports = (object, name, set) -> Object.defineProperty(object, name, {set, configurable: true})

@@ -1,3 +1,6 @@
+GET = require('../GET')
+SET = require('../SET')
+
 module.exports = class Translation2 extends require('../math/Matrix3')
 
    value: (x=0, y=x) ->

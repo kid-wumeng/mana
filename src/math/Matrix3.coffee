@@ -1,3 +1,5 @@
+GET = require('../GET')
+
 module.exports = class Matrix3 extends Float32Array
 
    constructor: (elements=[]) ->

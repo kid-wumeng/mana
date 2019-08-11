@@ -1,6 +1,5 @@
 animation = new mana.Animation(384, 384)
 animation.split(32, 48)
-console.log animation
 
 canvas = new mana.Canvas('webgl').color(0)
 shader = new mana.Shader(canvas,
@@ -22,6 +21,11 @@ shader = new mana.Shader(canvas,
    }
 ')
 
+console.log mana
+setTimeout ->
+   console.log mana
+, 300
+
 stack = new mana.MatrixStack3()
 stack.push(new mana.ProjectionOrtho2().value(0, 0, canvas.w, canvas.h))
 stack.push(new mana.Translation2().value(canvas.w/2, canvas.h/2))
@@ -35,11 +39,10 @@ v3 = stack.top.transform(new mana.Vector2(32, 0))
 v4 = stack.top.transform(new mana.Vector2(32, 48))
 
 new mana.Loader()
-   .image('a', 'assets/images/a.jpg')
-   .image('b', 'assets/images/b.png')
+   .image('a', '/assets/images/a.jpg')
+   .image('b', '/assets/images/b.png')
    .call()
    .on 'finish', ({ images }) -> canvas.call (gl) ->
-
       texture = gl.createTexture()
       gl.bindTexture(gl.TEXTURE_2D, texture)
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, images['b'])

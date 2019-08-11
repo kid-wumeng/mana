@@ -1,0 +1,1 @@
+module.exports = (object, name, get) -> Object.defineProperty(object, name, {get, configurable: true})
