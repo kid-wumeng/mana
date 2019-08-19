@@ -3,9 +3,12 @@ SET = require('../SET')
 
 module.exports = class Vector4 extends Float32Array
 
-   constructor: (x=0, y=0, z=0, w=1) ->
+   constructor: (x, y, z, w) ->
       super(4)
-      @[0]=x; @[1]=y; @[2]=z; @[3]=w
+      @set(x, y, z, w)
+
+   set: (x=0, y=0, z=0, w=1) ->
+      @[0]=x; @[1]=y; @[2]=z; @[3]=w; @
 
    zero:      -> @mul_me(0)
    normalize: -> @mul_me(if len=@len then 1/len else 0)

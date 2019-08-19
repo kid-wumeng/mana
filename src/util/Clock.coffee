@@ -1,8 +1,8 @@
 module.exports = class Clock extends require('./EventBus')
 
-   constructor: ->
+   constructor: (step=0) ->
       super()
-      @step = 0
+      @step = step
       @last = 0
       @running = false
 

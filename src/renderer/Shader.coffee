@@ -2,8 +2,10 @@ module.exports = class Shader
 
    constructor: (canvas, vert, frag) ->
       canvas.call (gl) =>
-         @program = gl.createProgram()
-         @locations = {}
+
+         @program  = gl.createProgram()
+         @attributes = {}
+         @uniforms   = {}
 
          vs = gl.createShader(gl.VERTEX_SHADER)
          fs = gl.createShader(gl.FRAGMENT_SHADER)
@@ -22,9 +24,8 @@ module.exports = class Shader
 
          for i in [0...attributes]
             {name} = gl.getActiveAttrib(@program, i)
-            @locations[name] = gl.getAttribLocation(@program, name)
-            gl.enableVertexAttribArray(@locations[name])
+            @attributes[name] = gl.getAttribLocation(@program, name)
 
          for i in [0...uniforms]
             {name} = gl.getActiveUniform(@program, i)
-            @locations[name] = gl.getUniformLocation(@program, name)
+            @uniforms[name] = gl.getUniformLocation(@program, name)

@@ -3,6 +3,10 @@ SET = require('../SET')
 
 module.exports = class Translation2 extends require('../math/Matrix3')
 
+   constructor: ->
+      super()
+      if arguments.length then @value(arguments...)
+
    value: (x=0, y=x) ->
       @[2]=x
       @[5]=y

@@ -41,11 +41,11 @@ module.exports = class Matrix3 extends Float32Array
       @[6]=A31*B11+A32*B21+A33*B31; @[7]=A31*B12+A32*B22+A33*B32; @[8]=A31*B13+A32*B23+A33*B33
       @
 
-   transform: (v) ->
-      [ x, y ] = v
-      v[0] = @[0]*x + @[1]*y + @[2]
-      v[1] = @[3]*x + @[4]*y + @[5]
-      v
+   transform: (sv, dv) ->
+      [ x, y ] = sv
+      dv[0] = @[0]*x + @[1]*y + @[2]
+      dv[1] = @[3]*x + @[4]*y + @[5]
+      dv
 
 GET Matrix3::, 'det',   -> @[0]*@[4]-@[1]*@[3]
 GET Matrix3::, 'clone', -> new Matrix3(@)

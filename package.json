@@ -4,7 +4,7 @@
    "description": "A Cross-platform JavaScript Game Framework",
    "author": "KID <kid.wumeng@gmail.com>",
    "private": true,
-   "main": "dist/mana",
+   "main": "src",
    "scripts": {
       "dev": "webpack-dev-server --config-name dev",
       "build": "webpack --config-name build"

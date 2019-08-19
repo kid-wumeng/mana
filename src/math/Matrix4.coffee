@@ -47,13 +47,13 @@ module.exports = class Matrix4 extends Float32Array
       @[8]=A31*B11+A32*B21+A33*B31+A34*B41; @[9]=A31*B12+A32*B22+A33*B32+A34*B42; @[10]=A31*B13+A32*B23+A33*B33+A34*B43; @[11]=A31*B14+A32*B24+A33*B34+A34*B44
       @
 
-   transform: (v) ->
-      [ x, y, z, w ] = v
+   transform: (sv, dv) ->
+      [ x, y, z, w ] = sv
       switch
-         when v instanceof Vector2 then v[0]=@[0]*x+@[1]*y+@[3];          v[1]=@[4]*x+@[5]*y+@[7]
-         when v instanceof Vector3 then v[0]=@[0]*x+@[1]*y+@[2]*z+@[3];   v[1]=@[4]*x+@[5]*y+@[6]*z+@[7];   v[2]=@[8]*x+@[9]*y+@[10]*z+@[11]
-         when v instanceof Vector4 then v[0]=@[0]*x+@[1]*y+@[2]*z+@[3]*w; v[1]=@[4]*x+@[5]*y+@[6]*z+@[7]*w; v[2]=@[8]*x+@[9]*y+@[10]*z+@[11]*w; v[3]=@[12]*x+@[13]*y+@[14]*z+@[15]*w
-      v
+         when v instanceof Vector2 then dv[0]=@[0]*x+@[1]*y+@[3];          dv[1]=@[4]*x+@[5]*y+@[7]
+         when v instanceof Vector3 then dv[0]=@[0]*x+@[1]*y+@[2]*z+@[3];   dv[1]=@[4]*x+@[5]*y+@[6]*z+@[7];   dv[2]=@[8]*x+@[9]*y+@[10]*z+@[11]
+         when v instanceof Vector4 then dv[0]=@[0]*x+@[1]*y+@[2]*z+@[3]*w; dv[1]=@[4]*x+@[5]*y+@[6]*z+@[7]*w; dv[2]=@[8]*x+@[9]*y+@[10]*z+@[11]*w; dv[3]=@[12]*x+@[13]*y+@[14]*z+@[15]*w
+      dv
 
 GET Matrix4::, 'det',   -> @[0]*(@[5]*@[10]-@[6]*@[9]) + @[1]*(@[6]*@[8]-@[4]*@[10]) + @[2]*(@[4]*@[9]-@[5]*@[8])
 GET Matrix4::, 'clone', -> new Matrix4(@)

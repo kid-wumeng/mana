@@ -19,10 +19,11 @@ module.exports =
    Scaling2:         require('./transform/Scaling2')
    Translation2:     require('./transform/Translation2')
 
-   Animation:        require('./util/Animation')
    Clock:            require('./util/Clock')
    Color:            require('./util/Color')
    EventBus:         require('./util/EventBus')
    Loader:           require('./util/Loader')
    MatrixStack3:     require('./util/MatrixStack3')
+   TextureView:      require('./util/TextureView')
    Tween:            require('./util/Tween')
+   VertexBuffer:     require('./util/VertexBuffer')
