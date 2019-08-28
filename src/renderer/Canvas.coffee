@@ -1,21 +1,12 @@
-GET    = require('../GET')
-device = require('../device/@')
+GET = require('../GET')
 
-module.exports = class Canvas
+module.exports = Canvas = HTMLCanvasElement
 
-   constructor: (mode, options={}) ->
-      @dpr = options.dpr ? device.dpr
-      @raw = options.raw ? document.body.appendChild(document.createElement('canvas'))
-      @ctx = @raw.getContext(mode)
-      if not options.raw
-         @size(device.w, device.h).move(0).css(-> @position='fixed')
+Canvas::fixed =                                                     -> @style.position = 'fixed';                                                  @
+Canvas::index = (z=0)                                               -> @style.zIndex=z;                                                            @
+Canvas::color = (r=0, g=r, b=g, a=1)                                -> @style.backgroundColor="rgba(#{r},#{g},#{b},#{a})";                         @
+Canvas::move  = (x=0, y=x)                                          -> @style.left="#{x}px"; @style.top="#{y}px";                                  @
+Canvas::size  = (w=innerWidth, h=innerHeight, dpr=devicePixelRatio) -> @style.width="#{w}px"; @style.height="#{h}px"; @width=w*dpr; @height=h*dpr; @
 
-   call:  (cb=->)              -> cb.call(@ctx, @ctx)
-   css:   (cb=->)              -> cb.call(@raw.style, @raw.style);                                                   @
-   size:  (w=0, h=w)           -> @css(-> @width="#{w}px"; @height="#{h}px"); @raw.width=@dpr*w; @raw.height=@dpr*h; @
-   move:  (x=0, y=x)           -> @css(-> @left="#{x}px"; @top="#{y}px")
-   index: (z=0)                -> @css(-> @zIndex=z)
-   color: (r=0, g=r, b=g, a=1) -> @css(-> @backgroundColor="rgba(#{r},#{g},#{b},#{a})")
-
-GET Canvas::, 'w', -> @raw.clientWidth
-GET Canvas::, 'h', -> @raw.clientHeight
+GET Canvas::, 'w', -> @clientWidth
+GET Canvas::, 'h', -> @clientHeight

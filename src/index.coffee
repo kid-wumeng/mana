@@ -7,7 +7,6 @@ module.exports =
    Vector2:          require('./math/Vector2')
    Vector3:          require('./math/Vector3')
    Vector4:          require('./math/Vector4')
-   Sprite:           require('./mesh/Sprite')
 
    Canvas:           require('./renderer/Canvas')
    Shader:           require('./renderer/Shader')
@@ -22,8 +21,10 @@ module.exports =
    Clock:            require('./util/Clock')
    Color:            require('./util/Color')
    EventBus:         require('./util/EventBus')
-   Loader:           require('./util/Loader')
+   ImageLoader:      require('./util/ImageLoader')
    MatrixStack3:     require('./util/MatrixStack3')
-   TextureView:      require('./util/TextureView')
    Tween:            require('./util/Tween')
-   VertexBuffer:     require('./util/VertexBuffer')
+   View:             require('./util/View')
+
+   GET: require('./GET')
+   SET: require('./SET')
