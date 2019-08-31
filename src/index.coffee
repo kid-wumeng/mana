@@ -2,6 +2,7 @@ module.exports =
    device:           require('./device/@')
 
    math:             require('./math/@')
+   Matrix:          require('./math/Matrix')
    Matrix3:          require('./math/Matrix3')
    Matrix4:          require('./math/Matrix4')
    Vector2:          require('./math/Vector2')
