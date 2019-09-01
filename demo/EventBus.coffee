@@ -1,4 +1,7 @@
-cb = (data) -> console.log data
+require('../')
+
+cb = (data) ->
+   console.log data
 
 new EventBus().on('update', cb)
    .emit('update', 1)

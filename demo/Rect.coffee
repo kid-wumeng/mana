@@ -1,3 +1,5 @@
+require('../')
+
 rect = new Rect(0, 0, 100, 200)
 
 console.log rect

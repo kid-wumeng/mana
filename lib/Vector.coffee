@@ -1,3 +1,5 @@
+{ GET, SET } = require('./Helper')
+
 module.exports = class Vector extends Float32Array
 
    constructor: (x, y) ->

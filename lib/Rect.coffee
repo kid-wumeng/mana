@@ -1,3 +1,5 @@
+{ GET } = require('./Helper')
+
 module.exports = class Rect
 
    constructor: (x, y, w, h) ->

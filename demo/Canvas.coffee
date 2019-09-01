@@ -1,4 +1,5 @@
-Canvas
+require('../')
+
 canvas = document.createElement('canvas')
    .size(innerWidth, innerHeight, devicePixelRatio)
    .move(0)
@@ -7,6 +8,4 @@ canvas = document.createElement('canvas')
    .index(1)
 
 document.body.appendChild(canvas)
-gl = canvas.getContext('webgl2')
-
-console.log gl
+console.log canvas.getContext('webgl2')

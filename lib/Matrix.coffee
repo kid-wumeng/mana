@@ -1,3 +1,5 @@
+{ GET } = require('./Helper')
+
 module.exports = class Matrix extends Array
 
    constructor: ->

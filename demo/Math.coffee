@@ -1,3 +1,5 @@
+require('../')
+
 console.log 'sum:',      Math.sum([1,2,3])
 console.log 'deg:',      Math.deg(Math.PI)
 console.log 'rad:',      Math.rad(180)

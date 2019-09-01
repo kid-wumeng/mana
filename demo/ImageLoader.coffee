@@ -1,3 +1,5 @@
+require('../')
+
 do ->
    images = await new ImageLoader()
       .add('test-1', '/demo/assets/test-1.png')

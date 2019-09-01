@@ -1,3 +1,5 @@
+require('../')
+
 view = new View(0, 0, 100, 100, 200, 200)
 
 console.log view

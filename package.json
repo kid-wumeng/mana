@@ -4,7 +4,6 @@
    "description": "A JavaScript Game Library",
    "author": "KID <kid.wumeng@gmail.com>",
    "private": true,
-   "main": "mana",
    "scripts": {
       "dev": "webpack-dev-server"
    },

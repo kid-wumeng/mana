@@ -1,3 +1,5 @@
+{ GET } = require('./Helper')
+
 module.exports = Canvas = HTMLCanvasElement
 
 Canvas::fixed =                                      -> @style.position = 'fixed';                                                  @

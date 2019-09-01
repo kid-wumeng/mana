@@ -1,3 +1,5 @@
+require('../')
+
 canvas = document.createElement('canvas')
 shader = new Shader(canvas.getContext('webgl2'),
 """

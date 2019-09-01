@@ -1,4 +1,4 @@
-module.exports = class View extends Rect
+module.exports = class View extends require('./Rect')
 
    constructor: (x, y, w, h, W, H) ->
       super()
