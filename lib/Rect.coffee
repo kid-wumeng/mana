@@ -1,3 +1,4 @@
+Vector  = require('./Vector')
 { GET } = require('./Helper')
 
 module.exports = class Rect

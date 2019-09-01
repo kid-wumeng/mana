@@ -1,3 +1,4 @@
+window.Camera      = require('./lib/Camera')
 window.Canvas      = require('./lib/Canvas')
 window.Clock       = require('./lib/Clock')
 window.EventBus    = require('./lib/EventBus')
