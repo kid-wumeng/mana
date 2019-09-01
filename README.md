@@ -1,5 +1,5 @@
 # mana
-A Game Library for JavaScript
+A JavaScript Game Library
 
 ## Shorthand
 * p = point
