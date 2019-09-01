@@ -16,9 +16,14 @@ module.exports = class Matrix extends Array
       C[2][0]=A31*B11+A32*B21+A33*B31; C[2][1]=A31*B12+A32*B22+A33*B32; C[2][2]=A31*B13+A32*B23+A33*B33;
       C
 
-   translate: (x=0, y=x) ->
+   move: (x=0, y=x) ->
       @[0][2] = x
       @[1][2] = y
+      @
+
+   view: (x=0, y=x) ->
+      @[0][2] = -x
+      @[1][2] = -y
       @
 
    scale: (x=1, y=x) ->
@@ -36,4 +41,6 @@ module.exports = class Matrix extends Array
       @[1][1]=2/(t-b); @[1][2]=(b+t)/(b-t)
       @
 
+GET Matrix::, 'x', -> @[0][2]
+GET Matrix::, 'y', -> @[1][2]
 GET Matrix::, 'elements', -> [@[0]..., @[1]..., @[2]...]
