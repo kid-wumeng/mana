@@ -1,6 +1,7 @@
 # mana
 A Game Library for JavaScript
 
+## Shorthand
 * p = point
 * w = width
 * h = height
