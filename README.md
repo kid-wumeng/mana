@@ -1,4 +1,5 @@
 # mana
+A Game Library for JavaScript
 
 p = point
 w = width
