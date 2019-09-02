@@ -24,8 +24,9 @@ module.exports = class Grid extends Array
             @[ey][ex] = element if (ey >= 0) and (ex >= 0) and (ey < h) and (ex < w)
       return @
 
-GET Grid::, 'w', -> @bounding.w
-GET Grid::, 'h', -> @bounding.h
+GET Grid::, 'w',    -> @bounding.w
+GET Grid::, 'h',    -> @bounding.h
+GET Grid::, 'area', -> @bounding.area
 
 GET Grid::, 'elements', ->
    {w, h} = @
