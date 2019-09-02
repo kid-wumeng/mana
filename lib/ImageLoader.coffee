@@ -1,12 +1,12 @@
 module.exports = class ImageLoader extends Array
 
-   add: (name, src) ->
+   add: (name, src) =>
       @push([name, src])
       return @
 
-   load: ->
+   load: =>
       return Promise.all @map ([name, src]) =>
-         new Promise (resolve) ->
+         new Promise (resolve) =>
             image = new Image()
             image.src = src
             image.onload = -> resolve([name, image])

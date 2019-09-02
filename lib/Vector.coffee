@@ -7,15 +7,15 @@ module.exports = class Vector extends Float32Array
       @[0] = x
       @[1] = y
 
-   add: (v) -> new Vector(@[0]+v[0], @[1]+v[1])
-   sub: (v) -> new Vector(@[0]-v[0], @[1]-v[1])
-   mul: (s) -> new Vector(@[0]*s, @[1]*s)
-   div: (s) -> new Vector(@[0]/s, @[1]/s)
+   add: (v) => new Vector(@[0]+v[0], @[1]+v[1])
+   sub: (v) => new Vector(@[0]-v[0], @[1]-v[1])
+   mul: (s) => new Vector(@[0]*s, @[1]*s)
+   div: (s) => new Vector(@[0]/s, @[1]/s)
 
-   dot:     (v) -> @[0]*v[0] + @[1]*v[1]
-   dist:    (v) -> Math.sqrt(@dist_sq(v))
-   dist_sq: (v) -> @sub(v).len_sq
-   direct:  (v) -> v.sub(@)
+   dot:     (v) => @[0]*v[0] + @[1]*v[1]
+   dist:    (v) => Math.sqrt(@dist_sq(v))
+   dist_sq: (v) => @sub(v).len_sq
+   direct:  (v) => v.sub(@)
 
 GET Vector::, 'len',    -> Math.sqrt(@len_sq)
 GET Vector::, 'len_sq', -> @[0]**2 + @[1]**2

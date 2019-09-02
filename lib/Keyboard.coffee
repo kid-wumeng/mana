@@ -13,5 +13,5 @@ module.exports = class Keyboard extends require('./EventBus')
    constructor: ->
       super()
       @actives = Object.values(KEYS).reduce(((actives, name) => actives[name]=false; actives), {})
-      document.addEventListener('keydown', (event) => name=KEYS[event.keyCode]; @actives[name] = true;  @emit('down', name); @emit("down:#{name}"))
-      document.addEventListener('keyup',   (event) => name=KEYS[event.keyCode]; @actives[name] = false; @emit('up', name); @emit("up:#{name}"))
+      document.addEventListener('keydown', (event) => name=KEYS[event.keyCode]; @actives[name]=true;  @emit('down', name); @emit("down:#{name}"))
+      document.addEventListener('keyup',   (event) => name=KEYS[event.keyCode]; @actives[name]=false; @emit('up', name); @emit("up:#{name}"))

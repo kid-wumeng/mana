@@ -15,7 +15,7 @@ module.exports = class Grid extends Array
          grid[dy] = @[y+dy][x...x+w]
       return grid
 
-   set: (grid, x=0, y=x) ->
+   set: (grid, x=0, y=x) =>
       {w, h} = @
       for row, dy in grid
          for element, dx in row

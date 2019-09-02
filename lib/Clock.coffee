@@ -6,13 +6,13 @@ module.exports = class Clock extends require('./EventBus')
       @last = 0
       @running = false
 
-   start: ->
+   start: =>
       if not @running
          @running = true
          window.requestAnimationFrame(@tick)
       return @
 
-   pause: ->
+   pause: =>
       if @running
          @running = false
       return @
@@ -24,4 +24,4 @@ module.exports = class Clock extends require('./EventBus')
             @emit('update')
          window.requestAnimationFrame(@tick)
 
-   scale: (@step=0) -> @
+   scale: (@step=0) => @
