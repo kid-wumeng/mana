@@ -6,26 +6,26 @@ module.exports = class BinPacker
       @root = new Rect(0, 0, 0, 0)
       @bins = []
 
-   add: (w, h, data) ->
-      @bins.push([w, h, data])
+   add: (data, w, h) ->
+      @bins.push([data, w, h])
       return @
 
    pack: ->
       return @bins
-         .sort ([w1, h1], [w2, h2]) => Math.max(w2, h2) - Math.max(w1, h1)
-         .map ([w, h, data]) =>
-            area=@search(@root, w, h) ? @expand(w, h)
-            area.used=true
-            area.r=new Rect(area.x+w, area.y, area.w-w, h)      if w < area.w
-            area.b=new Rect(area.x, area.y+h, area.w, area.h-h) if h < area.h
-            return [area.x, area.y, w, h, data]
+         .sort ([data1, w1, h1], [data2, w2, h2]) => Math.max(w2, h2) - Math.max(w1, h1)
+         .map ([data, w, h]) =>
+            node=@search(@root, w, h) ? @expand(w, h)
+            node.used=true
+            node.r=new Rect(node.x+w, node.y, node.w-w, h)      if w < node.w
+            node.b=new Rect(node.x, node.y+h, node.w, node.h-h) if h < node.h
+            return [data, node.x, node.y, w, h]
 
-   search: (area, w, h) ->
-      if area
-         if area.used
-            return @search(area.r, w, h) ? @search(area.b, w, h)
-         else if area.w >= w and area.h >= h
-            return area
+   search: (node, w, h) ->
+      if node
+         if node.used
+            return @search(node.r, w, h) ? @search(node.b, w, h)
+         else if node.w >= w and node.h >= h
+            return node
       return null
 
    expand: (w, h) ->
