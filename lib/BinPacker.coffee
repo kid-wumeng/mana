@@ -12,7 +12,7 @@ module.exports = class BinPacker
 
    pack: ->
       return @bins = @bins
-         .sort ([data1, w1, h1], [data2, w2, h2]) => Math.max(w2, h2) - Math.max(w1, h1)
+         .sort ([data1, w1, h1], [data2, w2, h2]) -> Math.max(w2, h2) - Math.max(w1, h1)
          .map ([data, w, h], i) =>
             node=@search(@root, w, h) ? @expand(w, h)
             node.used=true

@@ -12,9 +12,9 @@ console.log bins
 canvas = document.body.appendChild(document.createElement('canvas').move(0).fixed().color(0))
 canvas.size(packer.w, packer.h)
 
-CTX = canvas.getContext('2d')
+ctx = canvas.getContext('2d')
 COLORS = ['#333', '#444', '#555', '#666', '#777', '#888', '#999', '#AAA', '#BBB', '#CCC']
 
 bins.forEach ([data, x, y, w, h], i) ->
-   CTX.fillStyle = COLORS[i % COLORS.length]
-   CTX.fillRect(x, y, w, h)
+   ctx.fillStyle = COLORS[i % COLORS.length]
+   ctx.fillRect(x, y, w, h)

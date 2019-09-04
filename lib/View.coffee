@@ -4,7 +4,7 @@ module.exports = class View extends require('./Rect')
       super()
       @set(x, y, w, h, W, H)
 
-   set: (x, y, w, h, W, H) =>
+   set: (x, y, w, h, W, H) ->
       if W and H
          super(x/W, y/H, w/W, h/H)
       else

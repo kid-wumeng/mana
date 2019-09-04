@@ -8,14 +8,14 @@ module.exports = class Grid extends Array
       @[y] = new Array(w).fill(element) for y in [0...h]
       @bounding = new Rect(0, 0, w, h)
 
-   get: (x=0, y=x, w=@w, h=@h) =>
+   get: (x=0, y=x, w=@w, h=@h) ->
       {x, y, w, h} = new Rect(x, y, w, h).overlap(@bounding)
       grid = new Grid(w, h)
       for dy in [0...h]
          grid[dy] = @[y+dy][x...x+w]
       return grid
 
-   set: (grid, x=0, y=x) =>
+   set: (grid, x=0, y=x) ->
       {w, h} = @
       for row, dy in grid
          for element, dx in row

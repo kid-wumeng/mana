@@ -12,7 +12,7 @@ do ->
       .load()
 
    packer = new ImagePacker()
-   images = packer.pack(images)
+   packer.pack(images)
    packer.draw(ctx)
 
-   console.log images
+   console.log packer.bins
