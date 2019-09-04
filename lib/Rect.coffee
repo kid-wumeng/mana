@@ -7,11 +7,11 @@ module.exports = class Rect
       @x=0; @y=0; @w=0; @h=0
       @set(x, y, w, h)
 
-   set: (x=0, y=x, w=0, h=w) =>
+   set: (x=0, y=x, w=0, h=w) ->
       @x=x; @y=y; @w=w; @h=h
       return @
 
-   overlap: (rect) =>
+   overlap: (rect) ->
       x = Math.max(@min.x, rect.min.x)
       y = Math.max(@min.y, rect.min.y)
       w = Math.min(@max.x, rect.max.x) - x

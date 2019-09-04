@@ -1,3 +1,4 @@
+window.BinPacker   = require('./lib/BinPacker')
 window.Camera      = require('./lib/Camera')
 window.Canvas      = require('./lib/Canvas')
 window.Clock       = require('./lib/Clock')
