@@ -1,12 +1,11 @@
 module.exports = class ImagePacker extends require('./BinPacker')
 
-   pack: (images, ctx) =>
-      # calculate (x, y)
+   pack: (images) ->
       for [name, image] in images
          @add([name, image], image.width, image.height)
-      images = super()
-      # draw to canvas
+      return super()
+
+   draw: (ctx) ->
       ctx.canvas.size(@w, @h)
-      return images.map ([[name, image], x, y, w, h]) =>
-         ctx.drawImage(image, x, y)
-         return [name, image, x, y, w, h]
+      ctx.drawImage(image, x, y) for [[name, image], x, y, w, h] in @bins
+      return @

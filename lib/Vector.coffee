@@ -2,7 +2,7 @@
 
 module.exports = class Vector extends Float32Array
 
-   constructor: (x, y) ->
+   constructor: (x=0, y=0) ->
       super(2)
       @[0] = x
       @[1] = y
