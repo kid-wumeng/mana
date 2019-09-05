@@ -11,14 +11,14 @@ module.exports = class BinPacker
       return @
 
    pack: ->
-      return @bins = @bins
+      @bins = @bins
          .sort ([data1, w1, h1], [data2, w2, h2]) -> Math.max(w2, h2) - Math.max(w1, h1)
          .map ([data, w, h], i) =>
             node=@search(@root, w, h) ? @expand(w, h)
             node.used=true
             node.r=new Rect(node.x+w, node.y, node.w-w, h)      if w < node.w
             node.b=new Rect(node.x, node.y+h, node.w, node.h-h) if h < node.h
-            return [data, node.x, node.y, w, h]
+            [data, node.x, node.y, w, h]
 
    search: (node, w, h) ->
       if node
