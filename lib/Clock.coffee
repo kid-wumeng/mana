@@ -23,5 +23,3 @@ module.exports = class Clock extends require('./EventBus')
             @last = now
             @emit('update')
          window.requestAnimationFrame(@tick)
-
-   scale: (@step=0) -> @
