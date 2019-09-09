@@ -1,7 +1,7 @@
 module.exports = class ImagePacker extends require('./BinPacker')
 
    pack: (images) ->
-      for [name, image] in images
+      images.forEach (image, name) =>
          @add([name, image], image.width, image.height)
       super()
       @bins = @bins.map ([[name, image], x, y, w, h]) => [name, image, x, y, w, h]

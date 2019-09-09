@@ -1,5 +1,6 @@
 window._             = require('lodash')
 window.Animation     = require('./lib/Animation')
+window.Bin           = require('./lib/Bin')
 window.BinPacker     = require('./lib/BinPacker')
 window.Camera        = require('./lib/Camera')
 window.Canvas        = require('./lib/Canvas')

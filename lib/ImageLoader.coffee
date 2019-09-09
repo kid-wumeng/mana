@@ -1,12 +1,11 @@
-module.exports = class ImageLoader extends Array
-
-   add: (name, src) ->
-      @push([name, src])
-      return @
+module.exports = class ImageLoader extends Map
 
    load: ->
-      return Promise.all @map ([name, src]) ->
-         new Promise (resolve) ->
+      tasks = []
+      @forEach (src, name) ->
+         tasks.push new Promise (resolve) ->
             image = new Image()
             image.src = src
             image.onload = -> resolve([name, image])
+      images = await Promise.all(tasks)
+      return new Map(images)

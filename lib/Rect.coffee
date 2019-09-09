@@ -1,15 +1,13 @@
-Vector  = require('./Vector')
-{ GET } = require('./Helper')
+{ GET, SET } = require('./Helper')
+Vector = require('./Vector')
 
-module.exports = class Rect
+module.exports = class Rect extends Array
 
-   constructor: (x, y, w, h) ->
-      @x=0; @y=0; @w=0; @h=0
-      @set(x, y, w, h)
+   constructor: (x=0, y=x, w=0, h=w) ->
+      super(x, y, w, h)
 
    set: (x=0, y=x, w=0, h=w) ->
-      @x=x; @y=y; @w=w; @h=h
-      return @
+      @x=x; @y=y; @w=w; @h=h; @
 
    overlap: (rect) ->
       x = Math.max(@min.x, rect.min.x)
@@ -21,7 +19,17 @@ module.exports = class Rect
       else
          return new Rect(0, 0, 0, 0)
 
+GET Rect::, 'area',   -> @w * @h
 GET Rect::, 'min',    -> new Vector(@x, @y)
 GET Rect::, 'max',    -> new Vector(@x+@w, @y+@h)
 GET Rect::, 'center', -> new Vector(@x+@w/2, @y+@h/2)
-GET Rect::, 'area',   -> @w * @h
+
+GET Rect::, 'x', -> @[0]
+GET Rect::, 'y', -> @[1]
+GET Rect::, 'w', -> @[2]
+GET Rect::, 'h', -> @[3]
+
+SET Rect::, 'x', (x) -> @[0] = x
+SET Rect::, 'y', (y) -> @[1] = y
+SET Rect::, 'w', (w) -> @[2] = w
+SET Rect::, 'h', (h) -> @[3] = h
