@@ -2,10 +2,10 @@
 
 module.exports = class Schema
    constructor: -> @rules = []
-   B: (name) -> @rules.push(rule = new RuleB(name)); rule
-   N: (name) -> @rules.push(rule = new RuleN(name)); rule
-   S: (name) -> @rules.push(rule = new RuleS(name)); rule
-   A: (name) -> @rules.push(rule = new RuleA(name)); rule
+   bin:  (name) -> @rules.push(rule = new RuleBin(name)); rule
+   num:  (name) -> @rules.push(rule = new RuleNum(name)); rule
+   str:  (name) -> @rules.push(rule = new RuleStr(name)); rule
+   arr:  (name) -> @rules.push(rule = new RuleArr(name)); rule
 
    format: (src) -> @rules.reduce (dst, {name, test, replace}) ->
       if test(value = get(src, name))
@@ -21,23 +21,23 @@ class Rule
    enum:        (v...) -> @add((n)->v.includes(n))
    test:        (data) => @tests.every((test)->test(data))
 
-class RuleB extends Rule
+class RuleBin extends Rule
    constructor: (name) -> super(name).add(@type).replace=false
-class RuleN extends Rule
+class RuleNum extends Rule
    constructor: (name) -> super(name).add(@type).replace=0
-class RuleS extends Rule
+class RuleStr extends Rule
    constructor: (name) -> super(name).add(@type).replace=''
-class RuleA extends Rule
+class RuleArr extends Rule
    constructor: (name) -> super(name).add(@type).replace=->[]
 
-RuleB::type = (b) -> typeof(b) is 'boolean'
-RuleN::type = (n) -> typeof(n) is 'number'
-RuleS::type = (s) -> typeof(s) is 'string'
-RuleA::type = (a) -> Array.isArray(a)
+RuleBin::type = (b) -> typeof(b) is 'boolean'
+RuleNum::type = (n) -> typeof(n) is 'number'
+RuleStr::type = (s) -> typeof(s) is 'string'
+RuleArr::type = (a) -> Array.isArray(a)
 
-RuleN::min = (min) -> @add (n) -> n >= min
-RuleN::max = (max) -> @add (n) -> n >= max
-RuleS::min = (min) -> @add (s) -> s.length >= min
-RuleS::max = (max) -> @add (s) -> s.length <= max
-RuleA::min = (min) -> @add (a) -> a.length >= min
-RuleA::max = (max) -> @add (a) -> a.length <= max
+RuleNum::min = (min) -> @add (n) -> n >= min
+RuleNum::max = (max) -> @add (n) -> n >= max
+RuleStr::min = (min) -> @add (s) -> s.length >= min
+RuleStr::max = (max) -> @add (s) -> s.length <= max
+RuleArr::min = (min) -> @add (a) -> a.length >= min
+RuleArr::max = (max) -> @add (a) -> a.length <= max
