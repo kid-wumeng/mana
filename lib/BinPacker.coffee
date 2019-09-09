@@ -6,6 +6,11 @@ module.exports = class BinPacker
       @root = new Rect(0, 0, 0, 0)
       @bins = []
 
+   init: ->
+      @root = new Rect(0, 0, 0, 0)
+      @bins = []
+      return @
+
    add: (data, w, h) ->
       @bins.push([data, w, h])
       return @
