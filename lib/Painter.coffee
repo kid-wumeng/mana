@@ -5,16 +5,11 @@ module.exports = class Painter
       @ctx = @canvas.getContext('2d')
       document.body.appendChild(@canvas)
 
-   init: ->
-      @clear()
-      return @
-
    clear: ->
       @ctx.clearRect(0, 0, @canvas.w, @canvas.h)
-      return @
+      @
 
-   image: ->
-      return new Promise (resolve) =>
-         image = new Image()
-         image.onload = -> resolve(image)
-         image.src = @canvas.toDataURL("image/png")
+   image: -> new Promise (resolve) =>
+      image = new Image()
+      image.onload = -> resolve(image)
+      image.src = @canvas.toDataURL("image/png")

@@ -36,7 +36,7 @@ RuleStr::type = (s) -> typeof(s) is 'string'
 RuleArr::type = (a) -> Array.isArray(a)
 
 RuleNum::min = (min) -> @add (n) -> n >= min
-RuleNum::max = (max) -> @add (n) -> n >= max
+RuleNum::max = (max) -> @add (n) -> n <= max
 RuleStr::min = (min) -> @add (s) -> s.length >= min
 RuleStr::max = (max) -> @add (s) -> s.length <= max
 RuleArr::min = (min) -> @add (a) -> a.length >= min
