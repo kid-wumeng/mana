@@ -5,14 +5,16 @@ ctx = canvas.getContext('2d')
 
 do ->
    images = await new ImageLoader()
-      .add('test-1', '/demo/assets/test-1.png')
-      .add('test-2', '/demo/assets/test-2.png')
-      .add('test-3', '/demo/assets/test-3.png')
-      .add('test-4', '/demo/assets/test-4.png')
+      .set('test-1', '/demo/assets/test-1.png')
+      .set('test-2', '/demo/assets/test-2.png')
+      .set('test-3', '/demo/assets/test-3.png')
+      .set('test-4', '/demo/assets/test-4.png')
       .load()
 
-   packer = new ImagePacker()
-   packer.pack(images)
-   packer.draw(ctx)
+   canvas.size(600, 600)
+   bins = new ImagePacker().pack(images, canvas.w, canvas.h)
 
-   console.log packer.bins
+   for [{ name, image }, x, y, w, h] in bins[0]
+      ctx.drawImage(image, x, y)
+
+   console.log bins

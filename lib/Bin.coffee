@@ -1,3 +1,15 @@
+module.exports = class Bin extends Array
+
+   constructor: (w, h) ->
+      super()
+      @root = new Area(0, 0, w, h)
+
+   add: (data, w, h) ->
+      if area = @root.find(w, h)
+         @push([data, area.x, area.y, w, h])
+         @
+
+
 class Area extends require('./Rect')
    find: (w, h) ->
       if @used
@@ -7,9 +19,6 @@ class Area extends require('./Rect')
          if @w >= w and @h >= h
             @R = new Area(@x+w, @y, @w-w, h)  if w < @w
             @B = new Area(@x, @y+h, @w, @h-h) if h < @h
-            @used = true;
-            return new Area(@x, @y, w, h)
+            @used = true
+            return @
       return null
-
-module.exports = class Bin extends Area
-   constructor: (w, h) -> super(0, 0, w, h)
