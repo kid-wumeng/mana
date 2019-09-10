@@ -1,6 +1,6 @@
 require('../')
 
-canvas = document.body.appendChild(document.createElement('canvas').move(0).fixed().color(0))
+canvas = document.body.appendChild(document.createElement('canvas').move(0).fixed().color(216))
 ctx = canvas.getContext('2d')
 
 do ->
@@ -12,7 +12,7 @@ do ->
       .load()
 
    canvas.size(600, 600)
-   bins = new ImagePacker().pack(images, canvas.w, canvas.h)
+   bins = new ImagePacker().pack(images, canvas.w, canvas.h, 2)
 
    for [{ name, image }, x, y, w, h] in bins[0]
       ctx.drawImage(image, x, y)

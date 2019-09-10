@@ -1,12 +1,13 @@
 module.exports = class Bin extends Array
 
-   constructor: (w, h) ->
+   constructor: (w, h, gap=0) ->
       super()
+      @gap = gap
       @root = new Area(0, 0, w, h)
 
    add: (data, w, h) ->
-      if area = @root.find(w, h)
-         @push([data, area.x, area.y, w, h])
+      if area = @root.find(w+@gap*2, h+@gap*2)
+         @push([data, area.x+@gap, area.y+@gap, w, h])
          @
 
 
