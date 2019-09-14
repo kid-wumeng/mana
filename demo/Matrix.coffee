@@ -1,3 +1,3 @@
 require('../')
 
-console.log new Matrix().move(100)
+console.log new Matrix().translate(100)

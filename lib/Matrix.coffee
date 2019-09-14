@@ -17,14 +17,9 @@ module.exports = class Matrix extends Array
       C[2][0]=A31*B11+A32*B21+A33*B31; C[2][1]=A31*B12+A32*B22+A33*B32; C[2][2]=A31*B13+A32*B23+A33*B33;
       return C
 
-   move: (x=0, y=x) ->
+   translate: (x=0, y=x) ->
       @[0][2] = x
       @[1][2] = y
-      return @
-
-   view: (x=0, y=x) ->
-      @[0][2] = -x
-      @[1][2] = -y
       return @
 
    scale: (x=1, y=x) ->
@@ -37,11 +32,15 @@ module.exports = class Matrix extends Array
       @[1][0]=sin(a); @[1][1]=cos(a)
       return @
 
-   ortho: (l=0, t=0, r=0, b=0) ->
-      @[0][0]=2/(r-l); @[0][2]=(l+r)/(l-r)
-      @[1][1]=2/(t-b); @[1][2]=(b+t)/(b-t)
+   ortho: (l=0, t=0, w=0, h=0) ->
+      r=l+w
+      b=t+h
+      @[0][0]=2/+w; @[0][2]=(l+r)/-w
+      @[1][1]=2/-h; @[1][2]=(b+t)/+h
       return @
 
-GET Matrix::, 'x', -> @[0][2]
-GET Matrix::, 'y', -> @[1][2]
+GET Matrix::, 'tx', -> @[0][2]
+GET Matrix::, 'ty', -> @[1][2]
+GET Matrix::, 'sx', -> @[0][0]
+GET Matrix::, 'sy', -> @[1][1]
 GET Matrix::, 'elements', -> [@[0]..., @[1]..., @[2]...]
