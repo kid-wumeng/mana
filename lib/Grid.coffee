@@ -10,7 +10,7 @@ module.exports = class Grid extends Array
 
    get: (x=0, y=x, w=@w, h=@h) ->
       {x, y, w, h} = new Rect(x, y, w, h).overlap(@bounding)
-      grid = new Grid(w, h)
+      grid = new @constructor(w, h)
       for dy in [0...h]
          grid[dy] = @[y+dy][x...x+w]
       return grid
