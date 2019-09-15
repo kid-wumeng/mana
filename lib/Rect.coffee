@@ -1,10 +1,10 @@
 { GET, SET } = require('./Helper')
 Vector = require('./Vector')
 
-module.exports = class Rect extends Array
+module.exports = class Rect extends Float32Array
 
-   constructor: (x=0, y=x, w=0, h=w) ->
-      super(x, y, w, h)
+   constructor: (x, y, w, h) ->
+      super(4).set(x, y, w, h)
 
    set: (x=0, y=x, w=0, h=w) ->
       @x=x; @y=y; @w=w; @h=h; @
@@ -19,17 +19,17 @@ module.exports = class Rect extends Array
       else
          return new Rect(0, 0, 0, 0)
 
-GET Rect::, 'area',   -> @w * @h
-GET Rect::, 'min',    -> new Vector(@x, @y)
-GET Rect::, 'max',    -> new Vector(@x+@w, @y+@h)
-GET Rect::, 'center', -> new Vector(@x+@w/2, @y+@h/2)
-
 GET Rect::, 'x', -> @[0]
 GET Rect::, 'y', -> @[1]
 GET Rect::, 'w', -> @[2]
 GET Rect::, 'h', -> @[3]
-
 SET Rect::, 'x', (x) -> @[0] = x
 SET Rect::, 'y', (y) -> @[1] = y
 SET Rect::, 'w', (w) -> @[2] = w
 SET Rect::, 'h', (h) -> @[3] = h
+
+GET Rect::, 'area',   -> @w * @h
+GET Rect::, 'min',    -> new Vector(@x,      @y)
+GET Rect::, 'max',    -> new Vector(@x+@w,   @y+@h)
+GET Rect::, 'mid',    -> new Vector(@x+@w/2, @y+@h/2)
+GET Rect::, 'center', -> new Vector(@x+@w/2, @y+@h/2)
