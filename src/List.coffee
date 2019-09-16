@@ -25,9 +25,3 @@ module.exports = class List extends Array
 Object.defineProperty List::, 'min', get: -> Math.min(@...)
 Object.defineProperty List::, 'max', get: -> Math.max(@...)
 Object.defineProperty List::, 'sum', get: -> sum=0; sum+=n for n in @; sum
-
-List.demo = ->
-   console.log new List(3).fill('a').add('b').delete('a').has('a')
-   console.log new List(1,2,3).min
-   console.log new List(1,2,3).max
-   console.log new List(1,2,3).sum

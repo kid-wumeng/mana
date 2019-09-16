@@ -8,13 +8,3 @@ Canvas::size  = (w=innerWidth, h=innerHeight, dpr=1) -> @style.width="#{w}px"; @
 
 Object.defineProperty Canvas::, 'w', get: -> @clientWidth
 Object.defineProperty Canvas::, 'h', get: -> @clientHeight
-
-Canvas.demo = ->
-   canvas = document.createElement('canvas')
-      .size(innerWidth, innerHeight, devicePixelRatio)
-      .move(0)
-      .fixed()
-      .color(125, 125, 125, 0.5)
-      .index(1)
-   document.body.appendChild(canvas)
-   console.log canvas.getContext('webgl2')

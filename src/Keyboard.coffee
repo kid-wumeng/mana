@@ -1,4 +1,5 @@
 KEYS=[0..221].fill('')
+
 KEYS[8]='DELETE'; KEYS[9]='TAB'; KEYS[13]='ENTER'; KEYS[16]='SHIFT'; KEYS[17]='CTRL'; KEYS[18]='ALT'; KEYS[27]='ESC'; KEYS[32]='SPACE'
 KEYS[37]='->L'; KEYS[38]='->T'; KEYS[39]='->R'; KEYS[40]='->B'
 KEYS[48]='0'; KEYS[49]='1'; KEYS[50]='2'; KEYS[51]='3'; KEYS[52]='4'; KEYS[53]='5'; KEYS[54]='6'; KEYS[55]='7'; KEYS[56]='8'; KEYS[57]='9'
@@ -21,15 +22,4 @@ module.exports = class Keyboard
    handle_down: (event) => @actives[name=KEYS[event.keyCode]]=true;  @down(name) if @down
    handle_up:   (event) => @actives[name=KEYS[event.keyCode]]=false; @up(name)   if @up
 
-   active: (name) ->
-      return @actives[name] is true
-
-Keyboard.demo = ->
-   keyboard = new Keyboard()
-   setInterval ->
-      if keyboard.active('->L') then console.log '←'
-      if keyboard.active('->T') then console.log '↑'
-      if keyboard.active('->R') then console.log '→'
-      if keyboard.active('->B') then console.log '↓'
-   keyboard.up = (name) ->
-      if name is 'ENTER' then console.log 'enter'
+   active: (name) -> @actives[name] is true

@@ -1,5 +1,5 @@
 module.exports =
-   entry: '.'
+   entry: './index.dev'
    output:
       path: require('path').resolve(__dirname, 'dist')
       filename: 'mana.js'

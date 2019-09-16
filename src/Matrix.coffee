@@ -40,7 +40,3 @@ Object.defineProperty Matrix::, 'ty', get: -> @[1][2]
 Object.defineProperty Matrix::, 'sx', get: -> @[0][0]
 Object.defineProperty Matrix::, 'sy', get: -> @[1][1]
 Object.defineProperty Matrix::, 'elements', get: -> [@[0]..., @[1]..., @[2]...]
-
-Matrix.demo = ->
-   console.log new Matrix().translate(100).concat(new Matrix().scale(2))
-   console.log new Matrix().scale(2).concat(new Matrix().translate(100))

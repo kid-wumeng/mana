@@ -23,8 +23,3 @@ module.exports = class Clock
             @last=now
             @cb()
          window.requestAnimationFrame(@tick)
-
-Clock.demo = ->
-   new Clock ->
-      console.log performance.now()
-   .start(500)
