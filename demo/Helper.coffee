@@ -1,5 +1,3 @@
-require('../')
-
 class Room extends Float32Array
    constructor: (w, h) -> super(w, h)
 

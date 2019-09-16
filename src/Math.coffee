@@ -1,6 +1,5 @@
 module.exports = Math = window.Math
 
-Math.sum      = (all)            -> sum=0; sum+=n for n in all; sum
 Math.deg      = (rad=0)          -> rad / Math.PI * 180
 Math.rad      = (deg=0)          -> deg / 180 * Math.PI
 Math.rand     = (min=0, max=100) -> min+(max-min)*Math.random()

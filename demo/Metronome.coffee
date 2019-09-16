@@ -1,6 +1,4 @@
-require('../')
-
-metronome = new Metronome(2, -> console.log('hi~'))
+metronome = new Metronome(-> console.log('hi~')).step(2)
 metronome.next()
 metronome.next()
 metronome.next()
