@@ -8,17 +8,27 @@ module.exports = class Quadtree
       @root = new Node(x, y, w, h)
 
    add: (rect, data) ->
-      if @root.overlap(rect).area
+      if rect.overlap(@root).area
          for node in @root.assign(rect)
-            @dict.set(node, []) if not @dict.has(node)
+            if not @dict.has(node)
+               @dict.set(node, [])
             @dict.get(node).push(data)
       return @
 
    find: (rect) ->
-      if @root.overlap(rect).area
-         return @dict.get(@root.search(rect))
+      if rect.overlap(@root).area
+         node = @root.search(rect)
+         return @dict.get(node)
       else
          return []
+
+   clear: (rect) ->
+      @dict.clear()
+      delete @root.node_1
+      delete @root.node_2
+      delete @root.node_3
+      delete @root.node_4
+      return @
 
 
 class Node extends Rect
@@ -62,3 +72,4 @@ class Node extends Rect
          when 2 then @node_2 = new Node(@min.x, @min.y, @w/2, @h/2) if not @node_2
          when 3 then @node_3 = new Node(@min.x, @mid.y, @w/2, @h/2) if not @node_3
          when 4 then @node_4 = new Node(@mid.x, @mid.y, @w/2, @h/2) if not @node_4
+      return @

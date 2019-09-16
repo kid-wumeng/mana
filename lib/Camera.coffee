@@ -10,6 +10,11 @@ module.exports = class Camera extends Matrix
       @view = new Rect()
       @update()
 
+   focus:        (x=0, y=x) -> @translate(x-@view.w/2, y-@view.h/2)
+   translate_by: (x=0, y=x) -> @translate(x+@view.x, y+@view.y)
+   translate:    (x=0, y=x) -> @model.translate(x, y); @update()
+   scale:        (x=1, y=x) -> @model.scale(x, y);     @update()
+
    update: ->
       { w, h } = @canvas
       { tx, ty, sx, sy } = @model
@@ -20,8 +25,3 @@ module.exports = class Camera extends Matrix
       @ortho(x, y, w, h)
       @view.set(x, y, w, h)
       @
-
-   focus:        (x=0, y=x) -> @translate(x-@view.w/2, y-@view.h/2)
-   translate_by: (x=0, y=x) -> @translate(x+@view.x, y+@view.y)
-   translate:    (x=0, y=x) -> @model.translate(x, y); @update()
-   scale:        (x=1, y=x) -> @model.scale(x, y);     @update()

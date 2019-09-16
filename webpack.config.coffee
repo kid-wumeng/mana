@@ -1,5 +1,8 @@
 module.exports =
-   entry: require('fs').readdirSync('./demo').filter((name)=>/\.coffee$/.test(name)).map((name)=>name.replace(/\.coffee$/,'')).reduce(((entry, name)=>entry[name]="./demo/#{name}"; entry), {})
+   entry:
+      'Dict': './demo/Dict'
+      'Quadtree': './demo/Quadtree'
+      'Rect': './demo/Rect'
    module:
       rules: [{
          test: /\.coffee$/

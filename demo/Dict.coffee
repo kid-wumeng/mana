@@ -1,8 +1,6 @@
 require('../')
+dict = new Dict().set('kid', 18)
 
-dict1 = new Dict().set('kid', 18)
-dict2 = new Dict().set('cat', 16)
-
-console.log 'kid', dict1.get('kid')
-console.log 'kid', dict1.map((age)->age+10).get('kid')
-console.log dict1.from(dict2)
+console.log 'kid', dict.get('kid')
+console.log 'kid', dict.map((age)->age+10).get('kid')
+console.log dict.from(new Dict().set('cat', 6))

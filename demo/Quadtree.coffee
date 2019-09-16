@@ -1,6 +1,6 @@
 require('../')
-
 quadtree = new Quadtree(0, 0, 200, 200)
+
 quadtree.add(new Rect(0, 0, 20, 20), 'abc')
 quadtree.add(new Rect(160, 160, 20, 20), 'def')
 

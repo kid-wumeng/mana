@@ -1,9 +1,9 @@
 require('../')
+rect = new Rect(0, 0, 200, 300)
 
-rect = new Rect(0, 0, 100, 200)
-
-console.log rect
-console.log rect.min
-console.log rect.max
-console.log rect.center
-console.log rect.area
+console.log '     @ =>',        rect
+console.log '   min =>',    rect.min
+console.log '   mid =>',    rect.mid
+console.log '   max =>',    rect.max
+console.log '  area =>',   rect.area
+console.log 'center =>', rect.center

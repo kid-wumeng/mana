@@ -1,19 +1,15 @@
 module.exports = class Dict extends Map
 
-   map: (cb=(value)->value) ->
-      dict = new Dict()
-      @forEach (value, name) ->
-         dict.set(name, cb(value, name))
+   map: (cb=(v)->v) ->
+      dict = new Dict
+      @forEach((v, k) => dict.set(k, cb(v, k)))
       return dict
 
    filter: (cb=->false) ->
-      dict = new Dict()
-      @forEach (value, name) ->
-         if cb(value, name)
-            dict.set(name, value)
+      dict = new Dict
+      @forEach((v, k) => dict.set(k, v) if cb(v, k))
       return dict
 
    from: (dict) ->
-      dict.forEach (value, name) =>
-         @set(name, value)
+      dict.forEach((v, k) => @set(k, v))
       return @
