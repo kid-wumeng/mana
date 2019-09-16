@@ -1,5 +1,3 @@
-{ GET } = require('./Helper')
-
 module.exports = Canvas = HTMLCanvasElement
 
 Canvas::fixed =                                      -> @style.position = 'fixed';                                                  @
@@ -8,5 +6,15 @@ Canvas::color = (r=0, g=r, b=g, a=1)                 -> @style.backgroundColor="
 Canvas::move  = (x=0, y=x)                           -> @style.left="#{x}px"; @style.top="#{y}px";                                  @
 Canvas::size  = (w=innerWidth, h=innerHeight, dpr=1) -> @style.width="#{w}px"; @style.height="#{h}px"; @width=w*dpr; @height=h*dpr; @
 
-GET Canvas::, 'w', -> @clientWidth
-GET Canvas::, 'h', -> @clientHeight
+Object.defineProperty Canvas::, 'w', get: -> @clientWidth
+Object.defineProperty Canvas::, 'h', get: -> @clientHeight
+
+Canvas.demo = ->
+   canvas = document.createElement('canvas')
+      .size(innerWidth, innerHeight, devicePixelRatio)
+      .move(0)
+      .fixed()
+      .color(125, 125, 125, 0.5)
+      .index(1)
+   document.body.appendChild(canvas)
+   console.log canvas.getContext('webgl2')

@@ -1,6 +1,11 @@
+exports.Canvas   = Canvas   = require('./src/Canvas')
+exports.Clock    = Clock    = require('./src/Clock')
+exports.Dict     = Dict     = require('./src/Dict')
 exports.EventBus = EventBus = require('./src/EventBus')
 exports.List     = List     = require('./src/List')
+exports.Matrix   = Matrix   = require('./src/Matrix')
 exports.Rect     = Rect     = require('./src/Rect')
+exports.Shader   = Shader   = require('./src/Shader')
 exports.Vector   = Vector   = require('./src/Vector')
 
-EventBus.demo()
+Shader.demo()

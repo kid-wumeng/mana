@@ -1,6 +1,7 @@
 Vector = require('./Vector')
 
 module.exports = class Rect
+
    constructor: ->
       @init(arguments...)
 
