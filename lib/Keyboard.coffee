@@ -10,6 +10,7 @@ KEYS =
    186: ';', 187: '=', 188: ',', 189: '-', 190: '.', 191: '/', 192: '`', 219: '[', 220: '\\', 221: ']'
 
 module.exports = class Keyboard extends require('./EventBus')
+
    constructor: ->
       super()
       @actives = Object.values(KEYS).reduce(((actives, name) -> actives[name]=false; actives), {})

@@ -1,37 +1,43 @@
-Rect = require('./Rect')
-{ GET } = require('./Helper')
+Helper = require('./Helper')
+Rect   = require('./Rect')
+List   = require('./List')
 
-module.exports = class Grid extends Array
+module.exports = class Grid
 
-   constructor: (w=0, h=w, element=0) ->
-      super(h)
-      @[y] = new Array(w).fill(element) for y in [0...h]
+   constructor: (w, h) ->
       @bounding = new Rect(0, 0, w, h)
+      @elements = new List(@bounding.h).fill(=> new List(@bounding.w))
 
-   get: (x=0, y=x, w=@w, h=@h) ->
-      { x, y, w, h } = new Rect(x, y, w, h).overlap(@bounding)
-      grid = new @constructor(w, h)
-      for dy in [0...h]
-         grid[dy] = @[y+dy][x...x+w]
-      return grid
-
-   set: (grid, x=0, y=x) ->
-      { w, h } = @
-      for row, dy in grid
-         for element, dx in row
-            ey = y + dy
-            ex = x + dx
-            @[ey][ex] = element if (ey >= 0) and (ex >= 0) and (ey < h) and (ex < w)
+   forEach: (cb) ->
+      for y in [0...@bounding.h]
+         for x in [0...@bounding.w]
+            cb y, x, @elements[y][x]
       return @
 
-GET Grid::, 'w',    -> @bounding.w
-GET Grid::, 'h',    -> @bounding.h
-GET Grid::, 'area', -> @bounding.area
+   fill: (data) ->
+      row.fill(data) for row in @elements
+      return @
 
-GET Grid::, 'elements', ->
-   { w, h } = @
-   elements = new Array(w*h)
+   get: (x=0, y=x, w=@w, h=@h) ->
+      { w, h, min, max } = new Rect(x, y, w, h).overlap(@bounding)
+      grid = new @constructor(w, h)
+      for y in [0...grid.bounding.h]
+         grid.elements[y] = @elements[min.y+y][min.x...max.x]
+      return grid
+
+   # set: (grid, x=0, y=x) ->
+   #    { w, h } = @
+   #    for row, dy in grid
+   #       for element, dx in row
+   #          ey = y + dy
+   #          ex = x + dx
+   #          @[ey][ex] = element if (ey >= 0) and (ex >= 0) and (ey < h) and (ex < w)
+   #    return @
+
+Helper.GET Grid::, 'list', ->
+   { w, h, area } = @bounding
+   list = new List(area)
    for y in [0...h]
       for x in [0...w]
-         elements[w*y+x] = @[y][x]
-   return elements
+         list[w*y+x] = @elements[y][x]
+   return list

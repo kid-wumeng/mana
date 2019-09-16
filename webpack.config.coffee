@@ -1,8 +1,8 @@
 module.exports =
-   entry:
-      'Dict': './demo/Dict'
-      'Quadtree': './demo/Quadtree'
-      'Rect': './demo/Rect'
+   entry: '.'
+   output:
+      path: require('path').resolve(__dirname, 'dist')
+      filename: 'mana.js'
    module:
       rules: [{
          test: /\.coffee$/
