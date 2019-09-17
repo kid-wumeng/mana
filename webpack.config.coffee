@@ -15,4 +15,4 @@ module.exports =
       port: 9999
       stats: 'errors-only'
       clientLogLevel: 'warning'
-   # devtool: 'source-map'
+   devtool: 'source-map'
