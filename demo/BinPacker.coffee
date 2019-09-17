@@ -1,7 +1,9 @@
-bins = new BinPacker(100, 100)
-   .add(25, 25, 'data|1')
-   .add(76, 76, 'data|2')
-   .add(50, 50, 'data|3')
-   .pack()
+packer = new BinPacker(100, 100)
+   .add('data|1', 25, 25)
+   .add('data|2', 76, 76)
+   .add('data|3', 50, 50)
+   .run()
 
-console.log bins
+console.log packer
+console.log packer.bins
+console.log packer.views

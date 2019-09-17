@@ -4,16 +4,16 @@ View = require('./View')
 module.exports = class Bin
 
    constructor: (w, h) ->
-      @dict = new Dict()
+      @dict = new Dict
       @root = new View(0, 0, w, h)
 
-   add: (w, h, data) ->
+   add: (data, w, h) ->
       if view = @find(@root, w, h)
          view = @slice(view, w, h)
-         @dict.set(view, data)
-         return true
+         @dict.set(data, view)
+         return view
       else
-         return false
+         return null
 
    find: (view, w, h) ->
       if view.used
