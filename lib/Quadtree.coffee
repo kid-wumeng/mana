@@ -4,7 +4,7 @@ Rect = require('./Rect')
 module.exports = class Quadtree
 
    constructor: (x, y, w, h) ->
-      @dict = new Dict()
+      @dict = new Dict
       @root = new Node(x, y, w, h)
 
    add: (rect, data) ->

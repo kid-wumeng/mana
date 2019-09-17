@@ -1,3 +1,3 @@
 Object.assign(window, require('.'))
 
-require('./demo/Metronome')
+require('./demo/Bin')

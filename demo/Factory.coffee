@@ -1,5 +1,3 @@
-require('../')
-
 class TesterSprite
    constructor: (args...) -> console.log args...
 
