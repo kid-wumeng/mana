@@ -1,4 +1,5 @@
 exports.Bin         = require('./src/Bin')
+exports.BinPacker   = require('./src/BinPacker')
 exports.Canvas      = require('./src/Canvas')
 exports.Clock       = require('./src/Clock')
 exports.Dict        = require('./src/Dict')
