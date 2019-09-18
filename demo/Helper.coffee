@@ -12,4 +12,4 @@ console.log 'GET/SET:', room.area
 
 data = {}
 Helper.set(data, 'user.color', []).set(data, 'user.color.1', 255)
-console.log 'get/set:', Helper.get(data, 'user.color.1', 0)
+console.log 'get/set:', Helper.get(data, 'user.color.1', -> new Vector(0, 0))

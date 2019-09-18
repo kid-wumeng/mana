@@ -1,4 +1,4 @@
-{ get, set } = require('lodash')
+{ get, set } = require('./Helper')
 
 module.exports = class Schema
    constructor: -> @rules = []
@@ -7,12 +7,14 @@ module.exports = class Schema
    str:  (name) -> @rules.push(rule = new RuleStr(name)); rule
    arr:  (name) -> @rules.push(rule = new RuleArr(name)); rule
 
-   format: (src) -> @rules.reduce (dst, {name, test, replace}) ->
-      if test(value = get(src, name))
-         set(dst, name, value)
-      else
-         set(dst, name, if replace instanceof Function then replace() else replace)
-   , Object.create(null)
+   format: (src) ->
+      @rules.reduce (dest, { test, name, replace }=rule) ->
+         if test(data=get(src, name))
+            set(dest, name, data)
+         else
+            set(dest, name, if replace instanceof Function then replace() else replace)
+         return dest
+      , Object.create(null)
 
 class Rule
    constructor: (name) -> @name=name; @tests=[]

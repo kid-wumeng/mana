@@ -1,3 +1,3 @@
 Object.assign(window, require('.'))
 
-require('./demo/Helper')
+require('./demo/Schema')
