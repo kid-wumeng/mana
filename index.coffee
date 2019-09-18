@@ -1,3 +1,4 @@
+exports.Animation   = require('./src/Animation')
 exports.Bin         = require('./src/Bin')
 exports.BinPacker   = require('./src/BinPacker')
 exports.Canvas      = require('./src/Canvas')
