@@ -1,3 +1,3 @@
 Object.assign(window, require('.'))
 
-require('./demo/Camera')
+require('./demo/AStar')

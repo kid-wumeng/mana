@@ -1,12 +1,3 @@
-class Node
-   constructor: (x, y) ->
-      @x=x
-      @y=y
-
-
-
-
-
 module.exports = class AStar
 
    constructor: (grid) ->
