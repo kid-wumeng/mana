@@ -8,4 +8,8 @@ Helper.SET Room::, 'h', (h) -> @[1]=h
 room = new Room(2, 4)
 room.w = 3
 room.h = 5
-console.log 'area:', room.area
+console.log 'GET/SET:', room.area
+
+data = {}
+Helper.set(data, 'user.color', []).set(data, 'user.color.1', 255)
+console.log 'get/set:', Helper.get(data, 'user.color.1', 0)
