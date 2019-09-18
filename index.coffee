@@ -1,6 +1,7 @@
 exports.Animation   = require('./src/Animation')
 exports.Bin         = require('./src/Bin')
 exports.BinPacker   = require('./src/BinPacker')
+exports.Camera      = require('./src/Camera')
 exports.Canvas      = require('./src/Canvas')
 exports.Clock       = require('./src/Clock')
 exports.Dict        = require('./src/Dict')

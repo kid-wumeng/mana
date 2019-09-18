@@ -30,10 +30,13 @@ module.exports = class Matrix extends Array
       @[1][0]=sin(a); @[1][1]=cos(a)
       return @
 
-   ortho: (l=0, t=0, w=0, h=0) ->
-      @[0][0]=2/+w; @[0][2]=(2*l+w)/-w
-      @[1][1]=2/-h; @[1][2]=(2*t+h)/+h
+   ortho: (x=0, y=0, w=0, h=0) ->
+      @[0][0]=2/+w; @[0][2]=(2*x+w)/-w
+      @[1][1]=2/-h; @[1][2]=(2*y+h)/+h
       return @
+
+   translate_by: (x=0, y=x) -> @translate(@tx+x, @ty+y)
+   scale_by:     (x=0, y=x) -> @scale(@sx+x, @sy+y)
 
 Object.defineProperty Matrix::, 'tx', get: -> @[0][2]
 Object.defineProperty Matrix::, 'ty', get: -> @[1][2]
