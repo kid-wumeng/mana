@@ -1,8 +1,7 @@
-require('../')
-quadtree = new Quadtree(0, 0, 200, 200)
+quadtree = new Quadtree(0, 0, 200, 200, deep=3)
 
-quadtree.add(new Rect(0, 0, 20, 20), 'abc')
-quadtree.add(new Rect(160, 160, 20, 20), 'def')
+quadtree.add('data-1', new Rect(0, 0, 20, 20))
+quadtree.add('data-2', new Rect(160, 160, 20, 20))
 
 console.log quadtree
 console.log quadtree.find(new Rect(0, 0, 2, 2))

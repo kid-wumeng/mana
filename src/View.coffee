@@ -15,4 +15,7 @@ module.exports = class View extends Rect
       return @
 
    slice: (x, y, w, h) ->
-      return new @constructor(@x+x, @y+y, w, h).of(@)
+      return new @constructor(@x+x, @y+y, w, h)
+
+   slice_unit: (x, y, w, h) ->
+      return @slice(@w*x, @h*y, @w*w, @h*h)
