@@ -16,8 +16,12 @@ module.exports = class Grid extends List
    forEach: (cb) ->
       for y in [0...@h]
          for x in [0...@w]
-            cb y, x, @[y][x], @
+            cb(x, y, @[y][x], @)
       return @
+
+   map: (cb) ->
+      return @get(0, 0, @w, @h)
+         .forEach (x, y, data, grid) -> grid[y][x] = cb(x, y, data, grid)
 
    get: (x=0, y=x, w=@w, h=@h) ->
       { w, h, min, max } = new Rect(x, y, w, h).overlap_rect(@bounding)

@@ -1,6 +1,6 @@
 grid = new Grid(6, 5).fill(-> new Vector(0, 0))
 
-grid.forEach((y, x, vector, grid) -> grid[y][x] = "(#{x}|#{y})")
+grid.forEach((x, y, vector, grid) -> grid[y][x] = "(#{x}|#{y})")
 grid.set(new Grid(3, 3).fill('(*|*)'), 1, 1)
 grid.set_2d([
    [1, 2, 3, 4]
