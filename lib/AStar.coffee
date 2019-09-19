@@ -8,7 +8,6 @@ class Point
       @H=0
       @from=null
 
-
 module.exports = class AStar
 
    constructor: (grid) ->
@@ -91,7 +90,7 @@ module.exports = class AStar
       points.reverse()
 
       grid = @grid.map (x, y, point) -> return if point.g then '□' else '█'
-      points.forEach ({ x, y }) -> grid[y][x] = '○'
+      points.forEach ({ x, y }) -> grid[y][x] = '*'
 
       grid[@A.y][@A.x] = 'A'
       grid[@B.y][@B.x] = 'B'

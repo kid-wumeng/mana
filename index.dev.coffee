@@ -1,3 +1,3 @@
 Object.assign(window, require('.'))
 
-require('./demo/AStar')
+require('./demo/BinaryHeap')
