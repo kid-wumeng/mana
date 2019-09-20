@@ -80,7 +80,7 @@ module.exports = class AStar
       point.F = point.G + point.H
 
    find_min: ->
-      return @open_heap.top()
+      return @open_heap.top().data
 
    recall: ->
       points = []
