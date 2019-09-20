@@ -1,3 +1,5 @@
+BinaryHeap = require('./BinaryHeap')
+
 class Point
    constructor: (x, y, g) ->
       @x=x
@@ -14,14 +16,15 @@ module.exports = class AStar
       @grid=grid.map (x, y, g) -> new Point(x, y, g)
       @A=null
       @B=null
-      @opens=[]
+      @open_heap = new BinaryHeap()
+      console.log @open_heap
       @closes=[]
 
    search: (A, B) ->
       @A = @grid[A.y][A.x]
       @B = @grid[B.y][B.x]
-      @opens.push(@A)
-      while @opens.length
+      @open_heap.add(@A, @A.F)
+      while @open_heap.length
          min = @find_min()
          @closes.push(min)
          if (min is @B)
@@ -43,30 +46,30 @@ module.exports = class AStar
       if row_t
          if @can_join_opens(row_t[x])
             row_t[x].from = point
-            @opens.push(row_t[x])
             @compute(row_t[x])
+            @open_heap.add(row_t[x], row_t[x].F)
 
       if row_b
          if @can_join_opens(row_b[x])
             row_b[x].from = point
-            @opens.push(row_b[x])
             @compute(row_b[x])
+            @open_heap.add(row_b[x], row_b[x].F)
 
       if l >= 0
          if @can_join_opens(row_c[l])
             row_c[l].from = point
-            @opens.push(row_c[l])
             @compute(row_c[l])
+            @open_heap.add(row_c[l], row_c[l].F)
 
       if r < @grid.w
          if @can_join_opens(row_c[r])
             row_c[r].from = point
-            @opens.push(row_c[r])
             @compute(row_c[r])
+            @open_heap.add(row_c[r], row_c[r].F)
 
    can_join_opens: (point) ->
       if point.g > 0
-         if @opens.indexOf(point) is -1
+         if @open_heap.indexOf(point) is -1
             if @closes.indexOf(point) is -1
                return true
       return false
@@ -77,8 +80,7 @@ module.exports = class AStar
       point.F = point.G + point.H
 
    find_min: ->
-      @opens.sort (p1, p2) -> p2.F - p1.F
-      return @opens.pop()
+      return @open_heap.top()
 
    recall: ->
       points = []

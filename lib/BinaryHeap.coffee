@@ -1,35 +1,40 @@
 module.exports = class BinaryHeap extends Array
 
-   add: (data, weight) ->
-      cursor = @length
-      cursor_node = {data, weight}
-      @push(cursor_node)
-      while cursor > 0
-         parent = parseInt((cursor-1)/2)
-         parent_node = @[parent]
-         if weight > parent_node.weight
-            @[parent] = cursor_node
-            @[cursor] = parent_node
-            cursor = parent
-         else
-            break
-      return @
+   add: (data, weight=0) ->
+      return @upstream(@push({data, weight})-1)
 
    top: ->
-      top = @[0]
-      cursor_node = @pop()
+      head=@[0]
+      last=@pop()
       if @length
-         @[0] = cursor_node
-         cursor = 0
-         bottom = 1
-         while bottom <= @length-1
-            bottom++ if bottom < @length-1 and @[bottom].weight < @[bottom+1].weight
-            bottom_node = @[bottom]
-            if cursor_node.weight < bottom_node.weight
-               @[cursor] = bottom_node
-               @[bottom] = cursor_node
-               cursor = bottom
-               bottom = bottom*2+1
-            else
-               break
-      return top?.data
+         @[0]=last
+         @downstream(0)
+      return head
+
+   change: (node, weight) ->
+      switch
+         when weight < node.weight then node.weight = weight; @upstream(@indexOf(node))
+         when weight > node.weight then node.weight = weight; @downstream(@indexOf(node))
+      return node
+
+   upstream: (i) ->
+      node=@[i]
+      while i > 0
+         j = parseInt (i-1)/2
+         if node.weight < @[j].weight
+            @[i]=@[j]; i=j
+         else
+            break
+      return @[i]=node
+
+   downstream: (i) ->
+      node=@[i]
+      last=@length-1
+      while (j=i*2+1) <= last
+         if j < last and @[j].weight > @[j+1].weight
+            j = j+1
+         if node.weight > @[j].weight
+            @[i]=@[j]; i=j
+         else
+            break
+      return @[i]=node
