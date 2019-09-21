@@ -12,7 +12,7 @@ module.exports = class List extends Array
       return @
 
    clear: ->
-      @splice(0, @length)
+      @length=0
       return @
 
    fill: (item) ->
