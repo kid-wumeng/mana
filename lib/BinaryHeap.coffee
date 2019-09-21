@@ -60,4 +60,9 @@ module.exports = class BinaryHeap
             @downstream(data, size, i)
       return @
 
+   clear: ->
+      @datas = []
+      @sizes = []
+      return @
+
 Object.defineProperty BinaryHeap::, 'length', get: -> @datas.length

@@ -43,10 +43,11 @@ module.exports = class Grid extends List
             @[y+dy][x+dx] = data if (y+dy >= 0) and (x+dx >= 0) and (y+dy < @h) and (x+dx < @w)
       return @
 
-Object.defineProperty Grid::, 'w',    get: -> @bounding.w
-Object.defineProperty Grid::, 'h',    get: -> @bounding.h
-Object.defineProperty Grid::, 'area', get: -> @bounding.area
-Object.defineProperty Grid::, 'list', get: ->
+Object.defineProperty Grid::, 'w',     get: -> @bounding.w
+Object.defineProperty Grid::, 'h',     get: -> @bounding.h
+Object.defineProperty Grid::, 'area',  get: -> @bounding.area
+Object.defineProperty Grid::, 'clone', get: -> @get(0, 0, @w, @h)
+Object.defineProperty Grid::, 'list',  get: ->
    list = new List(@area)
    for y in [0...@h]
       for x in [0...@w]

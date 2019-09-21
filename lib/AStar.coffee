@@ -1,92 +1,120 @@
-Grid       = require('./Grid')
 BinaryHeap = require('./BinaryHeap')
+Grid       = require('./Grid')
 Vector     = require('./Vector')
-
-class Point
-   constructor: (x, y, g) ->
-      @x=x; @y=y; @g=g
-      @F=0; @H=0; @G=0
-      @from=null
 
 module.exports = class AStar
 
-   constructor: (grid) ->
-      @grid = new Grid(w=grid.w+2, h=grid.h+2)
-
-      for x in [0...w]
-         @grid[0][x] = new Point(x, 0, 0)
-         @grid[h-1][x] = new Point(x, h-1, 0)
-
-      for y in [1...h-1]
-         @grid[y][0] = new Point(0, y, 0)
-         @grid[y][w-1] = new Point(w-1, y, 0)
-
-      for y in [1...h-1]
-         for x in [1...w-1]
-            @grid[y][x] = new Point(x, y, grid[y-1][x-1])
-
-   search: (A, B) ->
-      { w, h } = grid = @grid
+   constructor: (grid_price) ->
+      { w, h } = grid_price
+      grid = new Grid(w, h)
       for y in [0...h]
          for x in [0...w]
-            grid[y][x].G = 0
-            grid[y][x].H = Math.abs(x-B.x) + Math.abs(y-B.y)
-            grid[y][x].F = 0
-            grid[y][x].from = null
+            grid[y][x] = {
+               x: x
+               y: y
+               price: grid_price[y][x]
+               around_prices: []
+               arounds: []
+               from: null
+               cost: 0
+               dist: 0
+               priority: 0
+               opened: false
+               closed: false
+            }
+      for y in [0...w]
+         for x in [0...h]
+            if grid_price[y][x]
+               l=x-1; r=x+1; t=y-1; b=y+1
+               arounds=[]; around_prices=[]
+               arounds.push(grid[y][l]) and around_prices.push(grid_price[y][l]) if grid_price[y][l]  # 左
+               arounds.push(grid[y][r]) and around_prices.push(grid_price[y][r]) if grid_price[y][r]  # 右
+               arounds.push(grid[t][x]) and around_prices.push(grid_price[t][x]) if grid_price[t]?[x] # 上
+               arounds.push(grid[b][x]) and around_prices.push(grid_price[b][x]) if grid_price[b]?[x] # 下
+               arounds.push(grid[t][l]) and around_prices.push(grid_price[t][l]*1.4) if grid_price[t]?[l] # 左上
+               arounds.push(grid[t][r]) and around_prices.push(grid_price[t][r]*1.4) if grid_price[t]?[r] # 右上
+               arounds.push(grid[b][l]) and around_prices.push(grid_price[b][l]*1.4) if grid_price[b]?[l] # 左下
+               arounds.push(grid[b][r]) and around_prices.push(grid_price[b][r]*1.4) if grid_price[b]?[r] # 右下
+               grid[y][x].arounds=arounds
+               grid[y][x].around_prices=around_prices
+      @grid = grid
 
-      A = grid[A.y+1][A.x+1]
-      B = grid[B.y+1][B.x+1]
-      opens = new BinaryHeap
-      closes = new Set
-      opens.set(A, 0)
 
-      while opens.size
-         center = opens.top()
-         closes.add(center)
+   search: (A, B) ->
+      { grid } = @
+      { w, h } = grid
 
+      A = grid[A.y][A.x]; A.cost = 0
+      B = grid[B.y][B.x]; B.from = null
+
+      for y in [0...h]
+         for x in [0...w]
+            grid[y][x].opened = false if grid[y][x].opened
+            grid[y][x].closed = false if grid[y][x].closed
+
+      opens=new BinaryHeap()
+      opens.add(A, 0)
+
+      while opens.length
+         center=opens.pop()
+         center.closed = true
          if center is B
             break
-
-         { x, y } = center
-
-         arounds = [
-            grid[y][x-1]
-            grid[y][x+1]
-            grid[y-1][x]
-            grid[y+1][x]
-         ]
-
-         for around in arounds
-            if around.g > 0 and !closes.has(around)
-               G = center.G+1
-               H = around.H
-               F = G+H
-               if opens.has(around)
-                  if F < around.F
-                     around.G=G
-                     around.F=F
-                     around.from=center
+         else
+            for around, i in center.arounds
+               if around.closed
+                  continue
+               if around.opened
+                  cost = center.cost + center.around_prices[i]
+                  priority = cost + around.dist
+                  if around.priority > priority
+                     around.priority = priority
+                     around.cost = cost
+                     around.from = center
                else
-                  around.G=G
-                  around.F=F
-                  around.from=center
-                  opens.set(around, F)
+                  around.cost = center.cost + center.around_prices[i]
+                  around.dist = Math.abs(B.x-around.x) + Math.abs(B.y-around.y)
+                  around.priority = around.cost + around.dist
+                  around.opened = true
+                  around.from = center
+                  opens.add(around, around.priority)
 
-      points = []
-      point = B
-      while point isnt A
-         points.push(new Vector(point.x-1, point.y-1))
-         point = point.from
-      points.reverse()
+      route=[]
+      if B.from
+         point=B
+         while point isnt A
+            route.push(new Vector(point.x, point.y))
+            point=point.from
+         route.push(new Vector(A.x, A.y))
+         route.reverse()
+      return route
 
-      return points
 
-   log: (A, B, points) ->
-      grid = @grid.map (x, y, point) -> if point.g then ' ' else '█'
-      points.forEach ({ x, y }) -> grid[y+1][x+1] = '*'
+   draw: (ctx) ->
+      size = 16
+      { grid, A, B, vectors } = @
+      ctx.canvas.size(grid.w * size, grid.h * size)
+      grid.forEach (x, y, point) ->
+         if point.price
+            if y%2 # 奇数行
+               if x%2 # 奇数列
+                  ctx.fillStyle = '#F8F8F8'
+               else # 偶数列
+                  ctx.fillStyle = '#FFFFFF'
+            else # 偶数行
+               if x%2 # 奇数列
+                  ctx.fillStyle = '#FFFFFF'
+               else # 偶数列
+                  ctx.fillStyle = '#F8F8F8'
+         else
+            ctx.fillStyle = '#D8C1BC'
+         ctx.fillRect(x*size, y*size, size, size)
 
-      grid[A.y+1][A.x+1] = 'A'
-      grid[B.y+1][B.x+1] = 'B'
+      ctx.fillStyle = 'rgba(0,0,0,1)'
+      ctx.fillRect(A.x*size, A.y*size, size, size)
+      ctx.fillRect(B.x*size, B.y*size, size, size)
 
-      for list, i in grid
-         console.log "(#{i.toString().padStart(2,'0')})", list.join('  ')
+      ctx.strokeStyle='#000'
+      vectors.forEach ({ x, y }) ->
+         ctx.lineTo(x*size+size/2, y*size+size/2)
+         ctx.stroke()
