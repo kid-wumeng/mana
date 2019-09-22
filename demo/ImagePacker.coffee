@@ -9,7 +9,7 @@ do ->
       .run()
 
    packer = new ImagePacker(400, 400)
-      .all(images)
+      .add(images)
       .run()
       .draw(ctx, console.log)
 

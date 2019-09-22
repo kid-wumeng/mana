@@ -7,13 +7,13 @@ module.exports = class ImagePacker extends BinPacker
       super(arguments...)
       @images = new Dict
 
-   all: (images) ->
-      images.forEach(@add.bind(@))
-      return @
-
    add: (name, image) ->
-      @images.set(name, image)
-      return super(name, image.w, image.h)
+      if arguments[0] instanceof Map
+         arguments[0].forEach(@add.bind(@))
+      else
+         @images.set(name, image)
+         super(name, image.w, image.h)
+      return @
 
    run: ->
       return super()
