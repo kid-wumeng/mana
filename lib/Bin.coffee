@@ -25,4 +25,4 @@ module.exports = class Bin
       view.used = true
       view.R = view.slice(w, 0, view.w-w, h)
       view.B = view.slice(0, h, view.w, view.h-h)
-      return view.slice(0, 0, w, h)
+      return view.slice(0, 0, w, h).of(@root)

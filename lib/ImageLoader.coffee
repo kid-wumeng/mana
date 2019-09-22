@@ -2,7 +2,7 @@ Dict = require('./Dict')
 
 module.exports = class ImageLoader extends Dict
 
-   load: ->
+   run: ->
       tasks = []
       @forEach (name, src) ->
          tasks.push new Promise (resolve) ->

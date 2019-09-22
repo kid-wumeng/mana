@@ -24,5 +24,5 @@ module.exports = class ImagePacker extends BinPacker
          ctx.clearRect(0, 0, @size.w, @size.h)
          bin.dict.forEach (name, {x, y}) =>
             ctx.drawImage(@images.get(name), x, y)
-         cb(ctx.canvas)
+         cb(ctx.canvas, i)
       return @
