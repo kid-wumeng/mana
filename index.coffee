@@ -1,4 +1,4 @@
-exports.AStar       = require('./lib/AStar')
+exports.AStarGrid   = require('./lib/AStarGrid')
 exports.Animation   = require('./lib/Animation')
 exports.Bin         = require('./lib/Bin')
 exports.BinPacker   = require('./lib/BinPacker')
