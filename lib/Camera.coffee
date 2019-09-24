@@ -3,7 +3,7 @@ View   = require('./View')
 
 module.exports = class Camera
 
-   constructor: (x, y, w, h) ->
+   constructor: (x=0, y=x, w=innerWidth, h=innerHeight) ->
       @t = new Matrix()
       @s = new Matrix()
       @p = new Matrix().ortho(x, y, w, h)

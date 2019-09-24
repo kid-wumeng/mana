@@ -33,15 +33,15 @@ module.exports = class Shader
       return program
 
    create_uniforms: (GL, program) ->
-      uniforms = new Map
+      uniforms = {}
       for i in [0...GL.getProgramParameter(program, GL.ACTIVE_UNIFORMS)]
          { name } = GL.getActiveUniform(program, i)
-         uniforms.set(name, GL.getUniformLocation(program, name))
+         uniforms[name] = GL.getUniformLocation(program, name)
       return uniforms
 
    create_attributes: (GL, program) ->
-      attributes = new Map
+      attributes = {}
       for i in [0...GL.getProgramParameter(program, GL.ACTIVE_ATTRIBUTES)]
          { name } = GL.getActiveAttrib(program, i)
-         attributes.set(name, GL.getAttribLocation(program, name))
+         attributes[name] = GL.getAttribLocation(program, name)
       return attributes

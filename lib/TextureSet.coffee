@@ -24,16 +24,6 @@ module.exports = class TextureSet
 
       images.add(await loader.run())
       packer.add(images).run()
-
-      gl.bindTexture(gl.TEXTURE_2D_ARRAY, image)
-      gl.texParameteri(gl.TEXTURE_2D_ARRAY, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
-      gl.texParameteri(gl.TEXTURE_2D_ARRAY, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
-      gl.texParameteri(gl.TEXTURE_2D_ARRAY, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
-      gl.texParameteri(gl.TEXTURE_2D_ARRAY, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
-      gl.texStorage3D(gl.TEXTURE_2D_ARRAY, 1, gl.RGBA8, w, h, packer.bins.length)
-      packer.draw ctx, (canvas, i) ->
-         gl.texSubImage3D(gl.TEXTURE_2D_ARRAY, 0, 0, 0, i, w, h, 1, gl.RGBA, gl.UNSIGNED_BYTE, canvas)
-
       views.add(packer.views)
       cb.call(@, @)
 
@@ -60,20 +50,29 @@ module.exports = class TextureSet
          table_h[id] = view.unit.h
          ids.set(name, id++/views.size)
 
-      gl.bindTexture(gl.TEXTURE_2D, table)
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
-      gl.texStorage2D(gl.TEXTURE_2D,  1, gl.R32F, views.size, 9)
-      gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, views.size, 1, gl.RED, gl.FLOAT, table_i)
-      gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 1, views.size, 1, gl.RED, gl.FLOAT, table_X)
-      gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 2, views.size, 1, gl.RED, gl.FLOAT, table_Y)
-      gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 3, views.size, 1, gl.RED, gl.FLOAT, table_W)
-      gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 4, views.size, 1, gl.RED, gl.FLOAT, table_H)
-      gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 5, views.size, 1, gl.RED, gl.FLOAT, table_x)
-      gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 6, views.size, 1, gl.RED, gl.FLOAT, table_y)
-      gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 7, views.size, 1, gl.RED, gl.FLOAT, table_w)
-      gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 8, views.size, 1, gl.RED, gl.FLOAT, table_h)
+      gl.bindTexture(gl.TEXTURE_2D_ARRAY, table)
+      gl.texParameteri(gl.TEXTURE_2D_ARRAY, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
+      gl.texParameteri(gl.TEXTURE_2D_ARRAY, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
+      gl.texParameteri(gl.TEXTURE_2D_ARRAY, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
+      gl.texParameteri(gl.TEXTURE_2D_ARRAY, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
+      gl.texStorage3D(gl.TEXTURE_2D_ARRAY,  1, gl.R32F, views.size, 1, 9)
+      gl.texSubImage3D(gl.TEXTURE_2D_ARRAY, 0, 0, 0, 0, views.size, 1, 1, gl.RED, gl.FLOAT, table_i)
+      gl.texSubImage3D(gl.TEXTURE_2D_ARRAY, 0, 0, 0, 1, views.size, 1, 1, gl.RED, gl.FLOAT, table_X)
+      gl.texSubImage3D(gl.TEXTURE_2D_ARRAY, 0, 0, 0, 2, views.size, 1, 1, gl.RED, gl.FLOAT, table_Y)
+      gl.texSubImage3D(gl.TEXTURE_2D_ARRAY, 0, 0, 0, 3, views.size, 1, 1, gl.RED, gl.FLOAT, table_W)
+      gl.texSubImage3D(gl.TEXTURE_2D_ARRAY, 0, 0, 0, 4, views.size, 1, 1, gl.RED, gl.FLOAT, table_H)
+      gl.texSubImage3D(gl.TEXTURE_2D_ARRAY, 0, 0, 0, 5, views.size, 1, 1, gl.RED, gl.FLOAT, table_x)
+      gl.texSubImage3D(gl.TEXTURE_2D_ARRAY, 0, 0, 0, 6, views.size, 1, 1, gl.RED, gl.FLOAT, table_y)
+      gl.texSubImage3D(gl.TEXTURE_2D_ARRAY, 0, 0, 0, 7, views.size, 1, 1, gl.RED, gl.FLOAT, table_w)
+      gl.texSubImage3D(gl.TEXTURE_2D_ARRAY, 0, 0, 0, 8, views.size, 1, 1, gl.RED, gl.FLOAT, table_h)
+
+      gl.bindTexture(gl.TEXTURE_2D_ARRAY, image)
+      gl.texParameteri(gl.TEXTURE_2D_ARRAY, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
+      gl.texParameteri(gl.TEXTURE_2D_ARRAY, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
+      gl.texParameteri(gl.TEXTURE_2D_ARRAY, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
+      gl.texParameteri(gl.TEXTURE_2D_ARRAY, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
+      gl.texStorage3D(gl.TEXTURE_2D_ARRAY, 1, gl.RGBA8, w, h, packer.bins.length)
+      packer.draw ctx, (canvas, i) ->
+         gl.texSubImage3D(gl.TEXTURE_2D_ARRAY, 0, 0, 0, i, w, h, 1, gl.RGBA, gl.UNSIGNED_BYTE, canvas)
 
       return @
