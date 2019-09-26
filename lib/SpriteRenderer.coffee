@@ -1,3 +1,7 @@
+ATTRIBUTES = 9
+FLOAT_SIZE = 4
+
+
 module.exports = class SpriteRenderer
 
    constructor: (gl, shader, texture) ->
@@ -13,18 +17,18 @@ module.exports = class SpriteRenderer
       gl.bindVertexArray(@vao)
       gl.bindBuffer(gl.ARRAY_BUFFER, @vbo_share)
       gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0,0, 0,1, 1,0, 1,1]), gl.STATIC_DRAW)
-      gl.vertexAttribPointer(shader.attributes['coord'], 2, gl.FLOAT, false, 8, 0)
+      gl.vertexAttribPointer(shader.attributes['coord'], 2, gl.FLOAT, false, 2 * FLOAT_SIZE, 0)
       gl.enableVertexAttribArray(shader.attributes['coord'])
       gl.bindBuffer(gl.ARRAY_BUFFER, @vbo)
-      gl.vertexAttribPointer(shader.attributes['id'], 1, gl.FLOAT, false, 36, 0)
-      gl.vertexAttribPointer(shader.attributes['tx'], 1, gl.FLOAT, false, 36, 4)
-      gl.vertexAttribPointer(shader.attributes['ty'], 1, gl.FLOAT, false, 36, 8)
-      gl.vertexAttribPointer(shader.attributes['sx'], 1, gl.FLOAT, false, 36, 12)
-      gl.vertexAttribPointer(shader.attributes['sy'], 1, gl.FLOAT, false, 36, 16)
-      gl.vertexAttribPointer(shader.attributes['r'],  1, gl.FLOAT, false, 36, 20)
-      gl.vertexAttribPointer(shader.attributes['g'],  1, gl.FLOAT, false, 36, 24)
-      gl.vertexAttribPointer(shader.attributes['b'],  1, gl.FLOAT, false, 36, 28)
-      gl.vertexAttribPointer(shader.attributes['a'],  1, gl.FLOAT, false, 36, 32)
+      gl.vertexAttribPointer(shader.attributes['id'], 1, gl.FLOAT, false, ATTRIBUTES * FLOAT_SIZE, 0 * FLOAT_SIZE)
+      gl.vertexAttribPointer(shader.attributes['tx'], 1, gl.FLOAT, false, ATTRIBUTES * FLOAT_SIZE, 1 * FLOAT_SIZE)
+      gl.vertexAttribPointer(shader.attributes['ty'], 1, gl.FLOAT, false, ATTRIBUTES * FLOAT_SIZE, 2 * FLOAT_SIZE)
+      gl.vertexAttribPointer(shader.attributes['sx'], 1, gl.FLOAT, false, ATTRIBUTES * FLOAT_SIZE, 3 * FLOAT_SIZE)
+      gl.vertexAttribPointer(shader.attributes['sy'], 1, gl.FLOAT, false, ATTRIBUTES * FLOAT_SIZE, 4 * FLOAT_SIZE)
+      gl.vertexAttribPointer(shader.attributes['r'],  1, gl.FLOAT, false, ATTRIBUTES * FLOAT_SIZE, 5 * FLOAT_SIZE)
+      gl.vertexAttribPointer(shader.attributes['g'],  1, gl.FLOAT, false, ATTRIBUTES * FLOAT_SIZE, 6 * FLOAT_SIZE)
+      gl.vertexAttribPointer(shader.attributes['b'],  1, gl.FLOAT, false, ATTRIBUTES * FLOAT_SIZE, 7 * FLOAT_SIZE)
+      gl.vertexAttribPointer(shader.attributes['a'],  1, gl.FLOAT, false, ATTRIBUTES * FLOAT_SIZE, 8 * FLOAT_SIZE)
       gl.vertexAttribDivisor(shader.attributes['id'], 1)
       gl.vertexAttribDivisor(shader.attributes['tx'], 1)
       gl.vertexAttribDivisor(shader.attributes['ty'], 1)
@@ -49,8 +53,8 @@ module.exports = class SpriteRenderer
 
    update: (sprites=[]) ->
       { gl, vao, vbo } = @
-      vertices = new Float32Array(9*sprites.length)
-      vertices.set(sprite.vertices, 9*i) for sprite, i in sprites
+      vertices = new Float32Array(ATTRIBUTES * sprites.length)
+      vertices.set(sprite.vertices, ATTRIBUTES * i) for sprite, i in sprites
       gl.bindVertexArray(vao)
       gl.bindBuffer(gl.ARRAY_BUFFER, vbo)
       gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STREAM_DRAW)
