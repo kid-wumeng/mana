@@ -24,6 +24,7 @@ module.exports = class TextureSet
 
       images.add(await loader.run())
       packer.add(images).run()
+      views.set('_', new View(0,0,0,0))
       views.add(packer.views)
       cb.call(@, @)
 

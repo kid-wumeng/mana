@@ -8,8 +8,6 @@ gl.blendFuncSeparate(gl.ONE, gl.ZERO, gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
 gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
 
 do ->
-   animation = new Animation()
-
    camera = new Camera()
    shader = new Shader(gl, SpriteRenderer.vert, SpriteRenderer.frag)
 
@@ -20,11 +18,15 @@ do ->
       .set('img-4', '/assets/img-4.png')
       .run()
 
-   sprites = [
-      new Sprite().image(texture.ids.get('img-2')).translate(200).color(0.5, 1, 1)
-      new Sprite().image(texture.ids.get('img-1')).translate(200).alpha(0.8)
-   ]
+   img1 = new Sprite().image(texture.ids.get('img-1')).translate(200).alpha(0.8)
+   img2 = new Sprite().image(texture.ids.get('img-2')).translate(200).color(128, 255, 255)
+   img3 = new Sprite().image(texture.ids.get('img-3'))
+
+   root = new Sprite().translate(50)
+   root.add(img2)
+   root.add(img1.add(img3))
+   root.translate_by(50).update_tree()
 
    renderer = new SpriteRenderer(gl, shader, texture)
-   renderer.update(sprites)
+   renderer.update(root.list)
    renderer.render(camera.mvp)

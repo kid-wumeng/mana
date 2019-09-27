@@ -1,7 +1,6 @@
 ATTRIBUTES = 9
 FLOAT_SIZE = 4
 
-
 module.exports = class SpriteRenderer
 
    constructor: (gl, shader, texture) ->
