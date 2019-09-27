@@ -15,6 +15,9 @@ module.exports = class Sprite
    color:     (r=1, g=r, b=g) -> @r=r; @g=g; @b=b; @
    alpha:     (a=1)           -> @a=a;             @
 
+   translate_by: (tx=0, ty=tx) -> @translate(@tx+tx, @ty+ty)
+   scale_by:     (sx=0, sy=sx) -> @scale(@sx+sx, @sy+sy)
+
 Object.defineProperty Sprite::, 'id', get: (-> @vertices[0]), set: (id) -> @vertices[0] = id
 Object.defineProperty Sprite::, 'tx', get: (-> @vertices[1]), set: (tx) -> @vertices[1] = tx
 Object.defineProperty Sprite::, 'ty', get: (-> @vertices[2]), set: (ty) -> @vertices[2] = ty

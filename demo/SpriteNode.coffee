@@ -18,14 +18,14 @@ do ->
       .set('img-4', '/assets/img-4.png')
       .run()
 
-   img1 = new Sprite().image(texture.ids.get('img-1')).translate(200).alpha(0.8)
-   img2 = new Sprite().image(texture.ids.get('img-2')).translate(200).color(128, 255, 255)
-   img3 = new Sprite().image(texture.ids.get('img-3'))
+   img1 = new SpriteNode().image(texture.ids.get('img-1')).translate(200).scale(1.5).alpha(.8)
+   img2 = new SpriteNode().image(texture.ids.get('img-2')).translate(200).color(128, 255, 255)
+   img3 = new SpriteNode().image(texture.ids.get('img-3'))
 
-   root = new Sprite().translate(50)
+   root = new SpriteNode().translate(50)
    root.add(img2)
    root.add(img1.add(img3))
-   root.translate_by(50).update_tree()
+   root.translate_by(50)
 
    renderer = new SpriteRenderer(gl, shader, texture)
    renderer.update(root.list)
