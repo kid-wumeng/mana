@@ -2,7 +2,7 @@ Dict = require('./Dict')
 
 module.exports = class TextureSet
 
-   constructor: (ctx, gl, w=400, h=w) ->
+   constructor: (ctx, gl, w=4096, h=w) ->
       @ctx = ctx
       @gl = gl
       @w = w

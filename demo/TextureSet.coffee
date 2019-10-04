@@ -8,5 +8,3 @@ do ->
       .set('img-3', '/assets/img-3.png')
       .set('img-4', '/assets/img-4.png')
       .run(-> console.log 'before create table/ids, @views:\n\n', @views, '\n\n')
-
-   console.log texture_set
